@@ -13,15 +13,91 @@
 </head>
 
 <body>
-    <header>
-
+    <header class="header">
+        <div class="header__barra contenedor">
+            <h3 class="header__titulo">ProStetic</h3>
+            <nav class="nav">
+                <a href="#" class="nav__a">Nosotros</a>
+                <a href="#" class="nav__a">Servicios</a>
+                <a href="#" class="nav__a">Galeria</a>
+                <a href="#" class="nav__a">Citas</a>
+                <a href="#" class="nav__a">Iniciar sesion</a>
+            </nav>
+            <div class="menu">
+                <a href="#">
+                    <i class="fas fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div class="header__contenido">
+            <h1 class="header__frase">No lo dejes para despues, si quieres un cambio hazlo ya!</h1>
+        </div>
     </header>
-    <main>
-
+    <main class="servicios">
+        <h2 class="servicios__titulo">Nuestros servicios</h2>
+        <div class="servicios__grid contenedor">
+            <div class="servicio">
+                <div class="servicio__mask">
+                    <picture>
+                        <source srcset=".avif" type="image/avif">
+                        <source srcset=".webp" type="image/webp">
+                        <img loading="lazy" src="." alt="servicio1" class="servicio__img">
+                    </picture>
+                </div>
+                <div class="servicio__contenido">
+                    <h3 class="servicio__nombre">Depilación</h3>
+                    <p class="servicio__precio">$ <span>400.00</span></p>
+                </div>
+            </div>
+            <div class="servicio">
+                <div class="servicio__mask">
+                    <picture>
+                        <source srcset=".avif" type="image/avif">
+                        <source srcset=".webp" type="image/webp">
+                        <img loading="lazy" src="." alt="servicio1" class="servicio__img">
+                    </picture>
+                </div>
+                <div class="servicio__contenido">
+                    <h3 class="servicio__nombre">Depilación</h3>
+                    <p class="servicio__precio">$ <span>400.00</span></p>
+                </div>
+            </div>
+            <div class="servicio">
+                <div class="servicio__mask">
+                    <picture>
+                        <source srcset=".avif" type="image/avif">
+                        <source srcset=".webp" type="image/webp">
+                        <img loading="lazy" src="." alt="servicio1" class="servicio__img">
+                    </picture>
+                </div>
+                <div class="servicio__contenido">
+                    <h3 class="servicio__nombre">Depilación</h3>
+                    <p class="servicio__precio">$ <span>400.00</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="posicion__boton">
+            <a href="#" class="btn primario">Ver más...</a>
+        </div>
     </main>
-    <footer>
+    <article class="tramitar">
+        <div class="tramitar__contenido">
+            <h2 class="tramitar__titulo">Tramita tu cita</h2>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum tenetur consequuntur laboriosam alias est eos vitae temporibus tempora recusandae suscipit!</p>
+            <div class="tramitar__botones">
+                <a href="#" class="btn primario">Tramitar cita</a>
+            </div>
+        </div>
+    </article>
+    <article class="galeria">
+        <div class="galeria__grid">
 
+        </div>
+    </article>
+    <footer class="footer">
+        <p class="footer__copy">&copy; Todos los derechos reservados</p>
     </footer>
+    <script src="https://kit.fontawesome.com/d2c5d4b6e4.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
