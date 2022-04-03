@@ -5,7 +5,7 @@
     display: grid;
     grid-template-rows: repeat(2, 1fr);
     padding: 3rem;
-    background-image: linear-gradient(to bottom, v.$primario 0%, v.$primario 50%, transparent 51%, transparent 100%), url(../img/Corte1.jpg);
+    background-image: linear-gradient(to bottom, v.$terciario 0%, v.$terciario 50%, transparent 51%, transparent 100%), url(../img/Corte1.jpg);
     background-size: 100%, 60rem;
     background-repeat: no-repeat;
     background-position: center, center bottom;
@@ -15,7 +15,7 @@
         padding: 5rem;
         grid-template-rows: unset;
         grid-template-columns: repeat(2, 1fr);
-        background-image: linear-gradient(to right, v.$primario 0%, v.$primario 50%, transparent 51%, transparent 100%), url(../img/Manicure2.jpg);
+        background-image: linear-gradient(to right, v.$terciario 0%, v.$terciario 50%, transparent 51%, transparent 100%), url(../img/Manicure2.jpg);
         background-size: 100%, 75rem;
         background-position: center, right center;
     }
@@ -36,7 +36,6 @@
         place-items: center;
     }
     &__btn {
-        color: darken(v.$primario, $amount: 50);
-        @include m.boton(v.$terciario, v.$blanco);
+        @include m.boton(darken(v.$primario, $amount: 90), v.$blanco);
     }
 }
