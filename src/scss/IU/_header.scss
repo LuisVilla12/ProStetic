@@ -1,0 +1,87 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+.header {
+    background-color: v.$primario;
+    &__titulo {
+        color: v.$blanco;
+    }
+    &__barra {
+        padding: 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__titulo {
+        font-weight: bold;
+    }
+    &__contenido {
+        display: flex;
+        justify-content: flex-end;
+    }
+    &__frase {
+        text-align: center;
+        color: v.$blanco;
+        @include m.tablet {
+            text-align: right;
+            max-width: 50rem;
+        }
+    }
+}
+
+.nav {
+    display: flex;
+    column-gap: 2rem;
+    &__a {
+        color: v.$blanco;
+        &:hover {
+            text-transform: uppercase;
+        }
+    }
+    i {
+        margin: .5rem;
+    }
+    display: none;
+    @include m.tablet {
+        display: block;
+    }
+}
+
+.menu {
+    i {
+        color: v.$blanco;
+    }
+    @include m.tablet {
+        display: none;
+    }
+}
+
+.contenedor-menu {
+    @include m.tablet {
+        display: none;
+    }
+    position: fixed;
+    background-color: rgba($color: #000000, $alpha: .7);
+    width: 100%;
+    height: 100%;
+    top: 7.5rem;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0;
+    a {
+        text-align: center;
+        display: block;
+        color: v.$blanco;
+        padding: 2rem;
+        background-color: darken($color: v.$secundario, $amount: 15);
+        margin: .5rem 0;
+        transition: background-color, color .4s ease-in-out;
+        &:hover {
+            cursor: pointer;
+            background-color: lighten($color: v.$primario, $amount: 15);
+            font-weight: bold;
+        }
+        i {
+            margin-right: .8rem;
+        }
+    }
+}
