@@ -3,7 +3,7 @@
 .servicios {
     &__titulo {
         text-align: center;
-        margin: 2rem 0;
+        margin: 1rem 0;
     }
     &__grid {
         @include m.tablet {

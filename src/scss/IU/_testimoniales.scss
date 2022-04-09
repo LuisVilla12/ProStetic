@@ -2,6 +2,7 @@
 @use 'base/mixins' as m;
 .testimoniales {
     &__titulo {
+        margin-bottom: 1rem;
         text-align: center;
     }
     &__grid {
@@ -15,15 +16,15 @@
 }
 
 .testimonial {
+    border-radius: 1rem 2rem;
+    padding: 0 2rem;
     background-color: v.$terciario;
-    &__grid {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        column-gap: 2rem;
-    }
-    &__nombre,
-    &__comentario {
+    margin-bottom: 1.3rem;
+    h4,
+    p {
         margin: 0;
+    }
+    &__contenido {
+        padding: 1rem 0;
     }
 }

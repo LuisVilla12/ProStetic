@@ -1,0 +1,52 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+.form_cita {
+    &__titulo {
+        text-align: center;
+        color: v.$primario;
+        margin: 1rem 0;
+    }
+    legend {
+        text-transform: uppercase;
+        font-weight: bold;
+        color: darken($color: v.$secundario, $amount: 70);
+    }
+    fieldset {
+        // border: .1rem solid v.$primario;
+        margin-bottom: 1.5rem;
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.campo {
+    margin: 1.5rem 0;
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+    &__label {
+        text-transform: uppercase;
+        color: darken($color: v.$secundario, $amount: 50);
+        font-weight: bold;
+    }
+    &__input {
+        display: block;
+        width: 100%;
+        padding: 1rem;
+        background-color: v.$terciario;
+        border: none;
+        border-radius: 1rem;
+    }
+}
+
+.btn-enviar {
+    text-align: center;
+    @include m.boton(v.$primario, v.$blanco);
+    margin: 2rem 0;
+    display: block;
+    width: 100%;
+    @include m.tablet {
+        display: inline-block;
+    }
+}
