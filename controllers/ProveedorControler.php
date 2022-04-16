@@ -11,7 +11,7 @@ class ProveedorControler{
         $registro = $_GET['registro'] ?? null;
         // Manda datos a la vista
         $router->render('proveedores/admin', [
-            'propiedades' => $proveedores,
+            'proveedores' => $proveedores,
             'registro' => $registro
         ]);
     }
@@ -36,25 +36,22 @@ class ProveedorControler{
         ]);
     }
     public static function actualizar(Router $router){
-        // $id=validarORediredireccionar('/');
-        // $proveedor=Proveedor::find($id);
-        // if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        //     $args=$_POST['proveedor'];
-        //     $proveedor->sincronizar($args);
-
-        //     // Crea arreglo de errores
-        //     $errores = $proveedor->validarErrores();
-
-        //     // Si el arreglo de errores esta vacio
-        //     if (empty($errores)) {
-        //         $proveedor->guardar();
-        //     }
-        // }
-        // // Funcion para validar errores
-        // $errores = $proveedor->validarErrores();
+        $id=validarORediredireccionar('/');
+        $proveedor=Proveedor::find($id);
+        $errores = Proveedor::getErrores();
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $args=$_POST['proveedor'];
+            $proveedor->sincronizar($args);
+         // Crea arreglo de errores
+            $errores = $proveedor->validarErrores();
+             // Si el arreglo de errores esta vacio
+            if (empty($errores)) {
+                $proveedor->guardar();
+            }
+        }
         $router->render('proveedores/actualizar', [
-            // 'proveedor' => $proveedor,
-            // 'errores' => $errores   
+            'proveedor' => $proveedor,
+            'errores' => $errores   
         ]);
     }
     public static function eliminar(){
@@ -66,7 +63,7 @@ class ProveedorControler{
                 if(validarTipoDeContenido($tipo)){
                     if($tipo==='proveedor'){
                         $proveedor=Proveedor::find($id);
-                        $proveedor->eliminar();    
+                        $proveedor->eliminar('proveedores');    
                     }
                 }
             }

@@ -6,22 +6,22 @@
     </div>
     <div class="campo">
         <label class="campo__label" for="RFC">RFC: </label>
-        <input class="campo__input" type="number" id="RFC" name="proveedor[RFC]" placeholder="Ingrese el precio de la propiedad" value="<?php echo sanitizar($proveedor->RFC); ?>">
+        <input class="campo__input" type="text" id="RFC" name="proveedor[RFC]" placeholder="Ingrese el RFC del proveedor" value="<?php echo sanitizar($proveedor->RFC); ?>">
     </div>
     <div class="campo">
         <label class="campo__label" for="direccion">Direccion: </label>
-        <input class="campo__input" type="number" id="direccion" name="proveedor[direccion]" placeholder="Ingrese el precio de la propiedad" value="<?php echo sanitizar($proveedor->direccion); ?>">
+        <input class="campo__input" type="text" id="direccion" name="proveedor[direccion]" placeholder="Ingrese la dirección" value="<?php echo sanitizar($proveedor->direccion); ?>">
     </div>
 </fieldset>
 <fieldset>
     <legend>Información de contacto</legend>
     <div class="campo">
         <label class="campo__label" for="telefono">Telefono: </label>
-        <input class="campo__input" type="number" id="telefono" placeholder="Ingrese el n° telefonico" min="1" name="propiedad[habitaciones]" value="<?php echo sanitizar($proveedor->telefono); ?>">
+        <input class="campo__input" type="number" id="telefono" placeholder="Ingrese el n° telefonico" min="1" name="proveedor[telefono]" value="<?php echo sanitizar($proveedor->telefono); ?>">
     </div>
     <div class="campo">
         <label class="campo__label" for="correo">Correo electronico: </label>
-        <input class="campo__input" type="email" id="correo" placeholder="Ingrese el correo electronico" name="propiedad[correo]" value="<?php echo sanitizar($proveedor->correo); ?>">
+        <input class="campo__input" type="email" id="correo" placeholder="Ingrese el correo electronico" name="proveedor[correo]" value="<?php echo sanitizar($proveedor->correo); ?>">
     </div>
     <div class="campo">
         <label>Metodo de pago</label>
@@ -32,7 +32,7 @@
             </div>
             <div class="campo__radio">
                 <label class="campo__label" for="tarjeta">Tarjeta:</label>
-                <input name="proveedor[metodoDePago]" type="radio" value="Transferencia" id="tarjeta">
+                <input name="proveedor[MetodoDePago]" type="radio" value="Transferencia" id="tarjeta">
             </div>
         </div>
     </div>

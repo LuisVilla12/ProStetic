@@ -14,14 +14,13 @@ class Router {
         session_start();
         // Verifica si inicio sesion
         $auth=$_SESSION['login']?? false;
-        $rutasProtegidas=['/admin'];
+        // $rutasProtegidas=['/admin'];
 
         // Localiza la ruta
         $urlActual= $_SERVER['PATH_INFO']?? '/';
         // Identifica que metodo es
         $metodo=$_SERVER['REQUEST_METHOD'];
-        // debuguear($urlActual);
-        // debuguear($metodo);
+        
         if($metodo==='GET'){
             // Extrae el valor de la ruta actual
             $funcion=$this->rutasGET[$urlActual] ?? null;
@@ -29,18 +28,17 @@ class Router {
             $funcion=$this->rutasPOST[$urlActual] ?? null;
         }
         // Proteger las rutas
-        if(in_array($urlActual,$rutasProtegidas)){
-            // si no inicio sesión lo redirige
-            if(!$auth){
-                header('Location:/');
-            }
-        }
+        // if(in_array($urlActual,$rutasProtegidas)){
+        //     // si no inicio sesión lo redirige
+        //     if(!$auth){
+        //         header('Location:/');
+        //     }
+        // }
         
         // Si existe una funcion asociada a esa ruta        
         if($funcion){
             // Manda a llamar una funcion
             call_user_func($funcion,$this);
-            // debuguear($funcion);
         }
         else{
             echo "Pagina no encontrada";

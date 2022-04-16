@@ -28,7 +28,7 @@ return $sanitizar;
 }
 
 function validarTipoDeContenido($tipo){
-    $tipos=['vendedor','propiedad'];
+    $tipos=['proveedor','producto','usuario'];
     // Retorna si hay un elemento en el arreglo
     return in_array($tipo,$tipos) ;
 }

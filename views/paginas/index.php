@@ -1,4 +1,3 @@
-<div class="menu__hidden"></div>
     <main class="servicios">
         <h2 class="servicios__titulo">Nuestros servicios</h2>
         <div class="servicios__grid contenedor">

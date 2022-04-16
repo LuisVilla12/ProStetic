@@ -6,7 +6,6 @@ if (!isset($_SESSION)) {
 }
 
 $autenticar=$_SESSION['login']??false;
-// $usuario=$_SESSION['usuario']??null;
 
 ?>
 <!DOCTYPE html>
@@ -51,10 +50,13 @@ $autenticar=$_SESSION['login']??false;
                 </a>
             </div>
         </div>
-        <div class="header__contenido contenedor">
-            <h2 class="header__frase">No lo dejes para despues, si quieres un cambio hazlo ya!</h2>
-        </div>
+        <?php if($inicio):?>
+            <div class="header__contenido contenedor">
+                <h2 class="header__frase">No lo dejes para despues, si quieres un cambio hazlo ya!</h2>
+            </div>
+        <?php endif;?>
     </header>
+    <div class="menu__hidden"></div>
     <?php echo $contenido; ?>
     <footer class="footer">
         <p class="footer__copy">&copy; Todos los derechos reservados</p>

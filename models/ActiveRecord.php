@@ -38,7 +38,7 @@ class ActiveRecord{
             header('Location:/?registro=2');
         }
     }
-    public function crear(){
+    public function crear(){    
         // sanitizar datos
         $atributos=$this->sanitizarDatos();
         // Concatena todas las keys del array consta de dos parametros el "separador", y la funcion;
@@ -84,17 +84,6 @@ class ActiveRecord{
         return static::$errores;
     }
 
-    // public function setImagen($imagen) {
-    //     //Elimina la imagen previa
-    //     if(isset($this->id)){
-    //         $this->eliminarImagen();
-    //     }
-    //     // Asignar al atributo de la imagen el nombre de la imagen
-    //     if($imagen){
-    //         $this->imagen=$imagen;
-    //     }
-    // }
-    
     // Lista todas las propiedades
     public static function all(){
         // Query
@@ -157,27 +146,17 @@ class ActiveRecord{
             }
         }
     }
-    public function eliminar(){
+    public function eliminar($tipo){
         // Eliminar el registro con ese ID
         $query = "DELETE FROM " .  static::$tabla .  " WHERE ";
         $query .= "id=" . self::$db->escape_string($this->id);
         $resultado =self::$db->query($query);
         if ($resultado) {
-            // $this->eliminarImagen();
-            header('Location:/?registro=3');
+            header('Location:/'.$tipo.'/admin?registro=3');
         }else{
             header('Location:/?registro=9');
         }
     }
-    // Eliminar imagen
-    // public function eliminarImagen(){
-    //     // Comprobar si existe archivo
-    //     $existeArchivo=file_exists(CARPETA_IMAGENES . $this->imagen);
-    //     // Elimina el archivo
-    //     if($existeArchivo){
-    //         unlink(CARPETA_IMAGENES . $this->imagen);
-    //     }
-    // }
     public function validarErrores(){
         static::$errores=[];
         return static::$errores;
