@@ -24,6 +24,7 @@ class ProveedorControler{
         $inicio=false;
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Instancia en el objeto
+
             $proveedor = new Proveedor($_POST['proveedor']);
             // Funcion para validar errores
             $errores = $proveedor->validarErrores();

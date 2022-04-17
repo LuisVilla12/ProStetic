@@ -8,7 +8,7 @@
     <?php endforeach; ?>
     
     <?php include __DIR__ . '/formulario.php'?>
-    <div class="justify">
+    <div class="space_between">
             <a href="/proveedores/admin" class="btn">Volver</a>
             <input type="submit" value="Actualizar" class="btn-enviar">
         </div>

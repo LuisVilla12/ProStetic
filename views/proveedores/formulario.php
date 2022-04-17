@@ -8,32 +8,62 @@
         <label class="campo__label" for="RFC">RFC: </label>
         <input class="campo__input" type="text" id="RFC" name="proveedor[RFC]" placeholder="Ingrese el RFC del proveedor" value="<?php echo sanitizar($proveedor->RFC); ?>">
     </div>
-    <div class="campo">
-        <label class="campo__label" for="direccion">Direccion: </label>
-        <input class="campo__input" type="text" id="direccion" name="proveedor[direccion]" placeholder="Ingrese la dirección" value="<?php echo sanitizar($proveedor->direccion); ?>">
-    </div>
 </fieldset>
 <fieldset>
-    <legend>Información de contacto</legend>
-    <div class="campo">
-        <label class="campo__label" for="telefono">Telefono: </label>
-        <input class="campo__input" type="number" id="telefono" placeholder="Ingrese el n° telefonico" min="1" name="proveedor[telefono]" value="<?php echo sanitizar($proveedor->telefono); ?>">
+    <legend>Dirección</legend>
+    <div class="dos_campos">
+        <div class="campo">
+            <label class="campo__label" for="calle">calle: </label>
+            <input class="campo__input" type="text" id="calle" name="proveedor[calle]" placeholder="Ingrese la calle" value="<?php echo sanitizar($proveedor->calle); ?>">
+        </div>
+        <div class="campo">
+            <label class="campo__label" for="colonia">colonia: </label>
+            <input class="campo__input" type="text" id="colonia" name="proveedor[colonia]" placeholder="Ingrese la colonia" value="<?php echo sanitizar($proveedor->colonia); ?>">
+        </div>
     </div>
-    <div class="campo">
-        <label class="campo__label" for="correo">Correo electronico: </label>
-        <input class="campo__input" type="email" id="correo" placeholder="Ingrese el correo electronico" name="proveedor[correo]" value="<?php echo sanitizar($proveedor->correo); ?>">
+    <div class="tres_campos">
+        <div class="campo">
+            <label class="campo__label" for="numExt">Numero Exterior: </label>
+            <input class="campo__input" type="number" id="numExt" name="proveedor[numExt]" placeholder="Ingrese la numero exterior" value="<?php echo sanitizar($proveedor->numExt); ?>">
+        </div>
+        <div class="campo">
+            <label class="campo__label" for="numInt">Numero Interior: </label>
+            <input class="campo__input" type="number" id="numInt" name="proveedor[numInt]" placeholder="Ingrese la numero Interior" value="<?php echo sanitizar($proveedor->numInt); ?>">
+        </div>
+        <div class="campo">
+            <label class="campo__label" for="CP">CP: </label>
+            <input class="campo__input" type="number" id="CP" name="proveedor[CP]" placeholder="Ingrese el CP" value="<?php echo sanitizar($proveedor->CP); ?>">
+        </div>
+    </div>
+    <div class="dos_campos">
+        <div class="campo">
+            <label class="campo__label" for="ciudad">Ciudad: </label>
+            <input class="campo__input" type="text" id="ciudad" name="proveedor[ciudad]" placeholder="Ingrese la ciudad" value="<?php echo sanitizar($proveedor->ciudad); ?>">
+        </div>
+        <div class="campo">
+            <label class="campo__label" for="estado">Estado: </label>
+            <input class="campo__input" type="text" id="estado" name="proveedor[estado]" placeholder="Ingrese el estado" value="<?php echo sanitizar($proveedor->estado); ?>">
+        </div>
+    </div>
+</fieldset>    
+<fieldset>
+    <legend>Información de contacto</legend>
+    <div class="dos_campos">
+        <div class="campo">
+            <label class="campo__label" for="telefono">Telefono: </label>
+            <input class="campo__input" type="number" id="telefono" placeholder="Ingrese el n° telefonico" min="1" name="proveedor[telefono]" value="<?php echo sanitizar($proveedor->telefono); ?>">
+        </div>
+        <div class="campo">
+            <label class="campo__label" for="correo">Correo electronico: </label>
+            <input class="campo__input" type="email" id="correo" placeholder="Ingrese el correo electronico" name="proveedor[correo]" value="<?php echo sanitizar($proveedor->correo); ?>">
+        </div>
     </div>
     <div class="campo">
         <label>Metodo de pago</label>
-        <div class="campo__radios">
-            <div class="campo__radio">
-                <label class="campo__label" for="efectivo">Efectivo:</label>
-                <input name="proveedor[metodoDePago]" type="radio" value="Efectivo" id="efectivo">
-            </div>
-            <div class="campo__radio">
-                <label class="campo__label" for="tarjeta">Tarjeta:</label>
-                <input name="proveedor[MetodoDePago]" type="radio" value="Transferencia" id="tarjeta">
-            </div>
-        </div>
+        <select name="proveedor[MetodoDePago]" class="campo__input" id="vendedor">
+            <option value="0" selected disabled>--Sin seleccionar--</option>
+            <option value="EFECTIVO" <?php echo $proveedor->MetodoDePago === 'EFECTIVO' ? 'selected' : ''; ?>>Efectivo</option>
+            <option value="TARJETA" <?php echo $proveedor->MetodoDePago === 'TARJETA' ? 'selected' : ''; ?>>Tarjeta</option>
+        </select>
     </div>
 </fieldset>

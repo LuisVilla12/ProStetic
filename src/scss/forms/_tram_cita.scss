@@ -20,6 +20,18 @@
     }
 }
 
+.dos_campos {
+    @include m.tablet {
+        @include m.grid(2, 1rem);
+    }
+}
+
+.tres_campos {
+    @include m.tablet {
+        @include m.grid(3, 1rem);
+    }
+}
+
 .campo {
     margin: 1.5rem 0;
     &:last-of-type {
