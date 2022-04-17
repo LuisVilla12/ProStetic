@@ -4,11 +4,11 @@
         <fieldset>
             <div class="campo">
                 <label for="usuario" class="campo__label">Correo electronico:</label>
-                <input type="email" id="usuario" class="campo__input" name="correo" value="">
+                <input type="email" id="usuario" class="campo__input" name="correo" value="" required>
             </div>
             <div class="campo">
                 <label for="contraseña" class="campo__label">Contraseña:</label>
-                <input type="password" id="contraseña" class="campo__input" name="contraseña" value="">
+                <input type="password" id="contraseña" class="campo__input" name="contraseña" value="" required>
             </div>
         </fieldset>
         <?php foreach ($errores as $error) : ?>

@@ -6,6 +6,7 @@ use Controllers\PaginasControler;
 use Controllers\UsuariosControler;
 use Controllers\LoginControler;
 
+
 $router = new Router();
 $router->get('/proveedores/admin',[ProveedorControler::class,'index']);
 $router->get('/proveedores/crear',[ProveedorControler::class,'crear']);
@@ -29,8 +30,8 @@ $router->get('/admin',[PaginasControler::class,'menu']);
 
 // Autenticar
 $router->get('/login',[LoginControler::class,'login']);
-// $router->post('/login',[LoginControler::class,'login']);
-// $router->get('/logout',[LoginControler::class,'logout']);
+$router->post('/login',[LoginControler::class,'login']);
+$router->get('/logout',[LoginControler::class,'logout']);
 
 $router->comprobarRutas();
 

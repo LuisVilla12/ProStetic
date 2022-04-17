@@ -5,30 +5,28 @@ namespace Controllers;
 use MVC\Router;
 use Model\Usuario;
 
-class LoginController {
+class LoginControler {
     public static function login( Router $router) {
         $errores = [];
+        $inicio=false;
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $auth = new Admin($_POST);
-            $errores = $auth->validarErrores();
-        
-            if(empty($errores)) {
-                $resultado = $auth->existeUsuario();
-                if( !$resultado ) {
-                    $errores = Admin::getErrores();
+            $auth = new Usuario($_POST);
+            $resultado = $auth->existeUsuario();
+            if( !$resultado ) {
+                $errores = Usuario::getErrores();
+            } else {
+                $resultadoAutenticar=$auth->comprobarContraseña($resultado);
+                if($resultadoAutenticar) {
+                    $auth->autenticar();
                 } else {
-                    $resultadoAutenticar=$auth->comprobarContraseña($resultado);
-                    if($resultadoAutenticar) {
-                       $auth->autenticar();
-                    } else {
-                        $errores =Admin::getErrores();
-                    }
+                    $errores =Usuario::getErrores();
                 }
             }
         }
 
         $router->render('auth/login', [
-            'errores' => $errores
+            'errores' => $errores,
+            'inicio'=>$inicio
         ]); 
     }
 

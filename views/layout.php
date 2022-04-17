@@ -1,8 +1,9 @@
 <?php
 // Validar si la sessione esta iniciada
+// debuguear($_SESSION);
 if (!isset($_SESSION)) {
     session_start();
-    // debuguear($_SESSION);
+    
 }
 
 $autenticar=$_SESSION['login']??false;
@@ -42,7 +43,12 @@ $autenticar=$_SESSION['login']??false;
                 <a href="#" class="nav__a"><i class="fa-solid fa-scissors"></i>Servicios</a>
                 <a href="#" class="nav__a"><i class="fa-solid fa-images"></i>Galeria</a>
                 <a href="#" class="nav__a"><i class="fa-solid fa-calendar-days"></i>Citas</a>
-                <a href="/login" class="nav__a"><i class="fa-solid fa-user"></i>Iniciar sesion</a>
+                <?php if($autenticar) :?>
+                    <a class="nav__a" href="/logout"><i class="fa-solid fa-user"></i>Cerar sesión</a>
+                    <?php endif?>
+                    <?php if(!$autenticar) :?>
+                    <a class="nav__a" href="/login"><i class="fa-solid fa-user"></i>Iniciar sesión</a>
+                    <?php endif?>
             </nav>
             <div class="menu">
                 <a href="#">

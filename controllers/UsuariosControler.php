@@ -27,6 +27,7 @@ class UsuariosControler{
             $confirmar_contraseña=$_POST['usuario']['confirmar_contraseña'];
 
             $usuario = new Usuario($_POST['usuario']);
+            $usuario->contraseña=password_hash($usuario->contraseña,PASSWORD_BCRYPT);
             // Funcion para validar errores
             $errores = $usuario->validarErrores();
 
