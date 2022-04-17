@@ -31,6 +31,27 @@ main {
     margin: 0 auto;
 }
 
+.contenedorMediano {
+    width: 95%;
+    max-width: 60rem;
+    margin: 0 auto;
+}
+
+.centrar_campos {
+    display: grid;
+    place-items: center;
+}
+
+.space_between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dos_columnas {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
 [class$="contenedor"] {
     width: 95%;
     max-width: 1000px;

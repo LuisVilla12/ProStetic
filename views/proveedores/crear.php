@@ -9,9 +9,9 @@
     
     <?php include __DIR__ . '/formulario.php'?>
     <div class="justify">
-            <a href="/proveedores/admin" class="btn">Volver</a>
-            <input type="submit" value="Registrar" class="btn-enviar">
-        </div>
+        <a href="/proveedores/admin" class="btn">Volver</a>
+        <input type="submit" value="Registrar" class="btn-enviar">
+    </div>
     </form>
     
 </main>

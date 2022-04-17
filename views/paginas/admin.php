@@ -19,7 +19,7 @@
         <i class="fa-solid fa-coins"></i>
             <a href="/ganancias/admin">Ganancias</a>
         </div>
-        <div class="submenu">
+        <div class="submenu">   
             <i class="fa-solid fa-file-invoice-dollar"></i>
             <a href="/ventas/admin">Ventas</a>
         </div>

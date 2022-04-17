@@ -9,16 +9,19 @@ class ProveedorControler{
     public static function index(Router $router)    {
         $proveedores = Proveedor::all();
         $registro = $_GET['registro'] ?? null;
+        $inicio=false;
         // Manda datos a la vista
         $router->render('proveedores/admin', [
             'proveedores' => $proveedores,
-            'registro' => $registro
+            'registro' => $registro,
+            'inicio'=>$inicio
         ]);
     }
 
     public static function crear(Router $router){       
         $proveedor = new Proveedor();
         $errores = Proveedor::getErrores();
+        $inicio=false;
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Instancia en el objeto
             $proveedor = new Proveedor($_POST['proveedor']);
@@ -32,13 +35,15 @@ class ProveedorControler{
         }
         $router->render('proveedores/crear', [
             'proveedor' => $proveedor,
-            'errores' => $errores
+            'errores' => $errores,
+            'inicio'=>$inicio
         ]);
     }
     public static function actualizar(Router $router){
         $id=validarORediredireccionar('/');
         $proveedor=Proveedor::find($id);
         $errores = Proveedor::getErrores();
+        $inicio=false;
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $args=$_POST['proveedor'];
             $proveedor->sincronizar($args);
@@ -51,7 +56,8 @@ class ProveedorControler{
         }
         $router->render('proveedores/actualizar', [
             'proveedor' => $proveedor,
-            'errores' => $errores   
+            'errores' => $errores,
+            'inicio'=>$inicio
         ]);
     }
     public static function eliminar(){

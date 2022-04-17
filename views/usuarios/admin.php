@@ -33,16 +33,20 @@
                     <td><?php echo $proveedor->correo ?></td>
                     <td><?php echo $proveedor->RFC ?></td>
                     <td>
-                        <div class="dos_columnas">                        
-                        <a href="/proveedores/actualizar?id=<?php echo $proveedor->id; ?>" class="btn amarillo" ><i class="fa-solid fa-pen"></i></a>
-                        <form method="POST" class="w-100" action="/proveedores/eliminar">
-                            <input type="hidden" name="id" value="<?php echo $proveedor->id; ?>">
-                            <input type="hidden" name="tipo" value="proveedor">
-                            <button type="submit" class="btn rojo enviar" value="">
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
-                        </form>
-                        </div>                        
+                        <div class="dos_columnas">
+                            <div class="div">
+                                <a href="/proveedores/actualizar?id=<?php echo $proveedor->id; ?>" class="btn amarillo"><i class="fa-solid fa-pen"></i></a>
+                            </div>
+                            <div class="">
+                                <form method="POST" class="w-100" action="/proveedores/eliminar">
+                                    <input type="hidden" name="id" value="<?php echo $proveedor->id; ?>">
+                                    <input type="hidden" name="tipo" value="proveedor">
+                                    <button type="submit" class="btn rojo enviar" value="">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </form>
+                            </div>                            
+                        </div>
                     </td>
                 </tr>
             <?php endforeach; ?>

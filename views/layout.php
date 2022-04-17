@@ -33,7 +33,7 @@ $autenticar=$_SESSION['login']??false;
 <body>
     <header class="header">
         <div class="header__barra contenedor">
-            <a href="index.html">
+            <a href="/">
                 <h3 class="header__titulo">ProStetic</h3>
             </a>
 
@@ -42,7 +42,7 @@ $autenticar=$_SESSION['login']??false;
                 <a href="#" class="nav__a"><i class="fa-solid fa-scissors"></i>Servicios</a>
                 <a href="#" class="nav__a"><i class="fa-solid fa-images"></i>Galeria</a>
                 <a href="#" class="nav__a"><i class="fa-solid fa-calendar-days"></i>Citas</a>
-                <a href="#" class="nav__a"><i class="fa-solid fa-user"></i>Iniciar sesion</a>
+                <a href="/login" class="nav__a"><i class="fa-solid fa-user"></i>Iniciar sesion</a>
             </nav>
             <div class="menu">
                 <a href="#">

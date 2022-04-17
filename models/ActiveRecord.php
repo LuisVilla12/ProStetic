@@ -20,6 +20,7 @@ class ActiveRecord{
         }
     }
     public function actualizar(){
+        $tipo = static::$tabla . 'es';
         // sanitizar datos
         $atributos=$this->sanitizarDatos();
         $valores=[];
@@ -35,10 +36,12 @@ class ActiveRecord{
         $resultado=self::$db->query($query);
         if ($resultado) {
             // Redireccionar el usuario
-            header('Location:/?registro=2');
+            header('Location:/'. $tipo . '/admin?registro=2');
         }
     }
+
     public function crear(){    
+        $tipo = static::$tabla . 'es';
         // sanitizar datos
         $atributos=$this->sanitizarDatos();
         // Concatena todas las keys del array consta de dos parametros el "separador", y la funcion;
@@ -52,7 +55,7 @@ class ActiveRecord{
         $resultado=self::$db->query($query);
         if ($resultado) {
             // Redireccionar el usuario
-            header('Location:/?registro=1');
+            header('Location:/'. $tipo . '/admin?registro=1');
         }
     }
     // Identifica y une los atributos de la base de datos
