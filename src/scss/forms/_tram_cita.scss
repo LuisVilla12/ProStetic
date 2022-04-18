@@ -1,6 +1,6 @@
 @use 'base/variables' as v;
 @use 'base/mixins' as m;
-.form_cita {
+.formulario {
     &__titulo {
         text-align: center;
         color: v.$primario;
@@ -17,6 +17,12 @@
         &:last-of-type {
             margin-bottom: 0;
         }
+    }
+    textarea {
+        display: block;
+        width: 100%;
+        resize: none;
+        border: 1px solid darken($color: v.$gris, $amount: 50);
     }
 }
 

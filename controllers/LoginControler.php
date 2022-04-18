@@ -15,9 +15,10 @@ class LoginControler {
             if( !$resultado ) {
                 $errores = Usuario::getErrores();
             } else {
-                $resultadoAutenticar=$auth->comprobarContraseña($resultado);
-                if($resultadoAutenticar) {
+                $auth->comprobarPassword($resultado);
+                if($auth->autenticado) {
                     $auth->autenticar();
+                    
                 } else {
                     $errores =Usuario::getErrores();
                 }

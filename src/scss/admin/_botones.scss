@@ -14,6 +14,9 @@
         background-color: rgb(204, 173, 36);
         margin: 1rem 0;
         padding: .8rem 0;
+        &:hover {
+            animation: animacionBTN 3s ease-in-out;
+        }
         i {
             display: block;
             margin-top: 1rem;
@@ -36,4 +39,10 @@
     text-align: center;
     font-weight: bold;
     color: v.$primario;
+}
+
+@keyframes animacionBTN {
+    0% {
+        box-shadow: 0 0 25px #5ddcff 0 0 50px #4e00c2;
+    }
 }

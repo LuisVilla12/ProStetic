@@ -47,34 +47,47 @@ class Usuario extends ActiveRecord{
         }
         return self::$errores;
     }
+    
+    public function existeUsuario() {
+        // Revisar si el usuario existe.
+        $query = "SELECT * FROM " . self::$tabla . " WHERE correo = '" . $this->correo . "' LIMIT 1";
+        $resultado = self::$db->query($query);
+        if(!$resultado->num_rows) {
+            self::$errores[] = 'El Usuario No Existe';
+            return;
+        }
+        return $resultado;
+    }
 
-    // PRUEBA
-   public function existeUsuario(){
-    // Revisar si usuario existe
-    $query="SELECT * FROM " . self::$tabla . " WHERE correo = '" . $this->correo ."' LIMIT 1";
-    $resultado =self::$db->query($query);
-    if(!$resultado->num_rows){
-        self::$errores[]='el usuario no existe';
+    public function comprobarPassword($resultado) {
+        $usuario = $resultado->fetch_object();
+
+        $this->autenticado = password_verify( $this->contraseña, $usuario->contraseña );
+
+        if(!$this->autenticado) {
+            self::$errores[] = 'El Password es Incorrecto';
+            return;
+        }
     }
-    return $resultado;
-}
-public function comprobarContraseña($resultado){
-    $usuario=$resultado->fetch_object();
-    $autenticado=password_verify($this->contraseña,$usuario->contraseña);
-    if(!$autenticado){
-        self::$errores[]='contraseña Erronea';
+    public function extraerNombre() {
+        // Revisar si el usuario existe.
+        $query = "SELECT nombre FROM " . self::$tabla . " WHERE correo = '" . $this->correo . "' LIMIT 1";
+        $resultado = self::$db->query($query);
+        $usuario = $resultado->fetch_object();
+        return $usuario;
     }
-    return $autenticado;    
-}
-public function autenticar(){
-    // inicia session
-    session_start();
-    // llenar el arreglo
-    $_SESSION['correo']=$this->correo;
-    $_SESSION['nombre']=$this->nombre;
-    // $_SESSION['usuario']=$this->usuario;
-    $_SESSION['login']= true;
-    header('Location:/admin');
-}
+    public function autenticar() {
+         // El usuario esta autenticado
+        session_start();
+
+         // Llenar el arreglo de la sesión
+        $_SESSION['correo'] = $this->correo;
+        // $_SESSION['idTipoUsuario'] = $this->idTipoUsuario;
+        // $_SESSION['nombre'] = UextraerNombre();
+        $_SESSION['login'] = true;
+        header('Location: /admin');
+    }
+
+
 }
 ?>  

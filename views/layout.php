@@ -7,7 +7,7 @@ if (!isset($_SESSION)) {
 }
 
 $autenticar=$_SESSION['login']??false;
-
+$nombre=$_SESSION['nombre']??false;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,17 +37,20 @@ $autenticar=$_SESSION['login']??false;
             <a href="/">
                 <h3 class="header__titulo">ProStetic</h3>
             </a>
-
             <nav class="nav">
-                <a href="#" class="nav__a"><i class="fa-solid fa-users"></i>Nosotros</a>
-                <a href="#" class="nav__a"><i class="fa-solid fa-scissors"></i>Servicios</a>
-                <a href="#" class="nav__a"><i class="fa-solid fa-images"></i>Galeria</a>
-                <a href="#" class="nav__a"><i class="fa-solid fa-calendar-days"></i>Citas</a>
-                <?php if($autenticar) :?>
-                    <a class="nav__a" href="/logout"><i class="fa-solid fa-user"></i>Cerar sesión</a>
-                    <?php endif?>
-                    <?php if(!$autenticar) :?>
+                <?php if (!$autenticar):?>
+                    <a href="#" class="nav__a"><i class="fa-solid fa-users"></i>Nosotros</a>
+                    <a href="#" class="nav__a"><i class="fa-solid fa-scissors"></i>Servicios</a>
+                    <a href="#" class="nav__a"><i class="fa-solid fa-images"></i>Galeria</a>
+                    <a href="#" class="nav__a"><i class="fa-solid fa-calendar-days"></i>Citas</a>
                     <a class="nav__a" href="/login"><i class="fa-solid fa-user"></i>Iniciar sesión</a>
+                <?php endif?>
+                <?php if($autenticar) :?>
+                    <a href="/agenda/admin" class="nav__a"><i class="fa-solid fa-calendar"></i>Agenda</a>
+                    <a href="/proveedores/admin" class="nav__a"><i class="fa-solid fa-truck-field"></i>Proveedores</a>
+                    <a href="/inventario/admin" class="nav__a"><i class="fa-solid fa-boxes-stacked"></i>Inventario</a>
+                    <a href="/usuarios/admin" class="nav__a"><i class="fa-solid fa-user"></i>Usuarios</a>
+                    <a class="nav__a" href="/logout"><i class="fa-solid fa-user"></i><?php echo $nombre?></a>
                     <?php endif?>
             </nav>
             <div class="menu">

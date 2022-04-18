@@ -52,6 +52,7 @@ class ActiveRecord{
         $query .= "('";
         $query .= "$enlistarValues')";
         // debuguear($query);
+        // exit;
         $resultado=self::$db->query($query);
         if ($resultado) {
             // Redireccionar el usuario
@@ -92,6 +93,13 @@ class ActiveRecord{
         // Query
         // self es sobre la misma tabla
         $query = "SELECT * FROM " .  static::$tabla;
+        $resultado=self::consultarSQL($query);
+        return $resultado;
+    }
+    public static function allEmpleados(){
+        // Query
+        // self es sobre la misma tabla
+        $query = "SELECT * FROM " .  static::$tabla . " WHERE idTipoUsuario=2";
         $resultado=self::consultarSQL($query);
         return $resultado;
     }

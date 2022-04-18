@@ -4,6 +4,9 @@ use MVC\Router;
 use Controllers\ProveedorControler;
 use Controllers\PaginasControler;
 use Controllers\UsuariosControler;
+use Controllers\Empl;
+use Controllers\EmpleadoControler;
+use Controllers\ProductoControler;
 use Controllers\LoginControler;
 
 
@@ -22,7 +25,21 @@ $router->post('/usuarios/crear',[UsuariosControler::class,'crear']);
 $router->get('/usuarios/actualizar',[UsuariosControler::class,'actualizar']);
 $router->post('/usuarios/actualizar',[UsuariosControler::class,'actualizar']);
 $router->post('/usuarios/eliminar',[UsuariosControler::class,'eliminar']);
+// Empleados
+$router->get('/empleados/admin',[EmpleadoControler::class,'index']);
+$router->get('/empleados/crear',[EmpleadoControler::class,'crear']);
+$router->post('/usuarios/crear',[EmpleadoControler::class,'crear']);
+// $router->get('/usuarios/actualizar',[EmpleadoControler::class,'actualizar']);
+// $router->post('/usuarios/actualizar',[EmpleadoControler::class,'actualizar']);
+// $router->post('/usuarios/eliminar',[EmpleadoControler::class,'eliminar']);
 
+// Productos
+$router->get('/inventario/admin',[ProductoControler::class,'index']);
+$router->get('/inventario/crear',[ProductoControler::class,'crear']);
+$router->post('/inventario/crear',[ProductoControler::class,'crear']);
+$router->get('/inventario/actualizar',[ProductoControler::class,'actualizar']);
+$router->post('/inventario/actualizar',[ProductoControler::class,'actualizar']);
+$router->post('/inventario/eliminar',[ProductoControler::class,'eliminar']);
 
 // Publica
 $router->get('/',[PaginasControler::class,'index']);

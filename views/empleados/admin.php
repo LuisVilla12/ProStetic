@@ -1,5 +1,5 @@
 <main class="contenedor">
-    <h1 class="admin__titulo">Administrador de clientes</h1>
+    <h1 class="admin__titulo">Administrador empleados</h1>
     <?php if($registro):?>
         <?php $mensaje=MostrarMensaje($registro)?>
             <?php if($mensaje): ?>
@@ -10,7 +10,7 @@
         <?php endif ?>
     <div class="space_between">
         <a href="/admin" class="btn">Volver</a>
-        <a href="/usuarios/crear" class="btn">Añadir cliente</a>
+        <a href="/empleados/crear" class="btn">Añadir empleado</a>
     </div>
     
     <table class="lista">
@@ -30,13 +30,13 @@
                     <td><?php echo $usuario->nombre ?></td>
                     <td><?php echo $usuario->apellidoPat ." " . $usuario->apellidoMat ?></td>
                     <td><?php echo $usuario->telefono ?></td>
-                    <td>
+                    <td>    
                         <div class="dos_columnas">
                             <div class="div">
-                                <a href="/usuarios/actualizar?id=<?php echo $usuario->id; ?>" class="btn amarillo"><i class="fa-solid fa-pen"></i></a>
+                                <a href="/empleados/actualizar?id=<?php echo $usuario->id; ?>" class="btn amarillo"><i class="fa-solid fa-pen"></i></a>
                             </div>
                             <div class="">
-                                <form method="POST" class="w-100" action="/usuarios/eliminar">
+                                <form method="POST" class="w-100" action="/empleados/eliminar">
                                     <input type="hidden" name="id" value="<?php echo $usuario->id;?>">
                                     <input type="hidden" name="tipo" value="usuario">
                                     <button type="submit" class="btn rojo enviar" value="">
@@ -50,7 +50,4 @@
             <?php endforeach; ?>
         </tbody>
     </table>
-    <div class="space_between">
-        <a href="/empleados/admin" class="btn">Empleados</a>
-    </div>
 </main>
