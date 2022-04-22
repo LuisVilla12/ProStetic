@@ -7,7 +7,7 @@ use Model\Usuario;
 
 class UsuariosControler{
     public static function index(Router $router)    {
-        $usuarios = Usuario::all();
+        $usuarios = Usuario::allClientes();
         $registro = $_GET['registro'] ?? null;
         $inicio=false;
         // Manda datos a la vista

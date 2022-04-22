@@ -1,13 +1,13 @@
 <?php
 // Validar si la sessione esta iniciada
-// debuguear($_SESSION);
+
 if (!isset($_SESSION)) {
     session_start();
     
 }
-
-$autenticar=$_SESSION['login']??false;
-$nombre=$_SESSION['nombre']??false;
+$nombre=$_SESSION['nombre']??'';
+$login=$_SESSION['correo']??'';
+$autenticar=$_SESSION['login']??'';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,9 +39,9 @@ $nombre=$_SESSION['nombre']??false;
             </a>
             <nav class="nav">
                 <?php if (!$autenticar):?>
-                    <a href="#" class="nav__a"><i class="fa-solid fa-users"></i>Nosotros</a>
+                    <a href="#" class="nav__a"><i class="fa-solid fa-users" ></i>Nosotros</a>
                     <a href="#" class="nav__a"><i class="fa-solid fa-scissors"></i>Servicios</a>
-                    <a href="#" class="nav__a"><i class="fa-solid fa-images"></i>Galeria</a>
+                    <a href="#" class="nav__a"><i class="fa-solid fa-images" id="#galeria"></i>Galeria</a>
                     <a href="#" class="nav__a"><i class="fa-solid fa-calendar-days"></i>Citas</a>
                     <a class="nav__a" href="/login"><i class="fa-solid fa-user"></i>Iniciar sesión</a>
                 <?php endif?>

@@ -84,6 +84,9 @@ class ActiveRecord{
         // Accede al valor de la variable estatica
         self::$db=$database;
     }
+    public static function setErrores($mensaje) {
+        static::$errores[] = $mensaje;
+    }
     public static function  getErrores(){
         return static::$errores;
     }
@@ -93,13 +96,6 @@ class ActiveRecord{
         // Query
         // self es sobre la misma tabla
         $query = "SELECT * FROM " .  static::$tabla;
-        $resultado=self::consultarSQL($query);
-        return $resultado;
-    }
-    public static function allEmpleados(){
-        // Query
-        // self es sobre la misma tabla
-        $query = "SELECT * FROM " .  static::$tabla . " WHERE idTipoUsuario=2";
         $resultado=self::consultarSQL($query);
         return $resultado;
     }
@@ -171,6 +167,12 @@ class ActiveRecord{
     public function validarErrores(){
         static::$errores=[];
         return static::$errores;
+    }
+    // Busca un registro por su id
+    public static function findWhere($columna,$valor) {
+        $query = "SELECT * FROM " . static::$tabla  ." WHERE ${columna} = '${valor}'";
+        $resultado = self::consultarSQL($query);
+        return array_shift( $resultado ) ;
     }
 
 }

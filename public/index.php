@@ -50,5 +50,14 @@ $router->get('/login',[LoginControler::class,'login']);
 $router->post('/login',[LoginControler::class,'login']);
 $router->get('/logout',[LoginControler::class,'logout']);
 
+// Crear cuenta
+$router->get('/crear-cuenta',[LoginControler::class,'crearCuenta']);
+$router->post('/crear-cuenta',[LoginControler::class,'crearCuenta']);
+// Mensaje de confirmacion
+$router->get('/mensaje',[LoginControler::class,'mensaje']);
+// Confirmar cuenta
+$router->get('/confirmar-cuenta',[LoginControler::class,'confirmarCuenta']);
+$router->post('/confirmar-cuenta',[LoginControler::class,'confirmarCuenta']);
 $router->comprobarRutas();
+
 

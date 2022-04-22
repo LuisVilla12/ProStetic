@@ -48,6 +48,23 @@ main {
     justify-content: space-between;
 }
 
+.text-center {
+    text-align: center;
+}
+
+.acciones {
+    p {
+        margin: 0;
+    }
+    a {
+        display: block;
+    }
+    span {
+        color: v.$primario;
+        font-weight: bold;
+    }
+}
+
 .dos_columnas {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

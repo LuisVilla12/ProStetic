@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '00b231ad2bd26c7627fda14b4a347872440ae2bb',
+        'reference' => 'ba4fb6b222658e4aa0e94679065e175f7587dc6f',
         'name' => 'luisvilla/bienespoo',
         'dev' => true,
     ),
@@ -34,7 +34,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '00b231ad2bd26c7627fda14b4a347872440ae2bb',
+            'reference' => 'ba4fb6b222658e4aa0e94679065e175f7587dc6f',
             'dev_requirement' => false,
         ),
         'phpmailer/phpmailer' => array(

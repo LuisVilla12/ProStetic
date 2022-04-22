@@ -32,14 +32,15 @@ class ComposerStaticInit63bdac902216faa9722c7a5817c57a68
         'C' => 
         array (
             'Controllers\\' => 12,
+            'Clases\\' => 7,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'PHPMailer\\PHPMailer\\' => 
         array (
@@ -64,6 +65,10 @@ class ComposerStaticInit63bdac902216faa9722c7a5817c57a68
         'Controllers\\' => 
         array (
             0 => __DIR__ . '/../..' . '/controllers',
+        ),
+        'Clases\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/clases',
         ),
     );
 
