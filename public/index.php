@@ -4,7 +4,6 @@ use MVC\Router;
 use Controllers\ProveedorControler;
 use Controllers\PaginasControler;
 use Controllers\UsuariosControler;
-use Controllers\Empl;
 use Controllers\EmpleadoControler;
 use Controllers\ProductoControler;
 use Controllers\LoginControler;
@@ -28,7 +27,7 @@ $router->post('/usuarios/eliminar',[UsuariosControler::class,'eliminar']);
 // Empleados
 $router->get('/empleados/admin',[EmpleadoControler::class,'index']);
 $router->get('/empleados/crear',[EmpleadoControler::class,'crear']);
-$router->post('/usuarios/crear',[EmpleadoControler::class,'crear']);
+$router->post('/empleados/crear',[EmpleadoControler::class,'crear']);
 // $router->get('/usuarios/actualizar',[EmpleadoControler::class,'actualizar']);
 // $router->post('/usuarios/actualizar',[EmpleadoControler::class,'actualizar']);
 // $router->post('/usuarios/eliminar',[EmpleadoControler::class,'eliminar']);
@@ -44,6 +43,8 @@ $router->post('/inventario/eliminar',[ProductoControler::class,'eliminar']);
 // Publica
 $router->get('/',[PaginasControler::class,'index']);
 $router->get('/admin',[PaginasControler::class,'menu']);
+// Agenda
+$router->get('/agenda/inicio',[PaginasControler::class,'inicio']);
 
 // Autenticar
 $router->get('/login',[LoginControler::class,'login']);

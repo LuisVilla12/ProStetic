@@ -18,11 +18,26 @@
 </fieldset>
 <fieldset>
     <legend>Datos de domicilio</legend>
+    <div class="tres_campos">
     <div class="campo">
-            <label class="campo__label" for="domicilio">Domicilio: </label>
-            <input class="campo__input" type="text" id="domicilio" required name="usuario[domicilio]" placeholder="Ingrese el domicilio" value="<?php echo sanitizar($usuario->domicilio); ?>">
-        </div>
+        <label class="campo__label" for="calle">Calle: </label>
+        <input class="campo__input" type="text" id="calle" required name="usuario[calle]" placeholder="Ingrese la calle" value="">
+        <?php //echo sanitizar($usuario->calle); ?>
+    </div>
+    <div class="campo">
+        <label class="campo__label" for="colonia">Colonia: </label>
+        <input class="campo__input" type="text" id="colonia" required name="usuario[colonia]" placeholder="Ingrese la colonia" value="">
+        <?php //echo sanitizar($usuario->colonia); ?>
+    </div>
+    <div class="campo">
+        <label class="campo__label" for="CP">CP: </label>
+        <input class="campo__input" type="number" id="CP" required name="usuario[CP]" placeholder="Ingrese el CP" value="">
+        <?php //echo sanitizar($usuario->CP); ?>
+    </div>
+    </div>
+    
 </fieldset>
+
 <fieldset>
     <legend>Datos de contacto</legend>
     <div class="dos_campos">

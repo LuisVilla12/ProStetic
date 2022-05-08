@@ -13,9 +13,13 @@ class Usuario extends ActiveRecord{
     public $apellidoMat;
     public $telefono;
     public $correo;
-    public $contraseña;
+    public $contraseña;    
     public $token;
     public $confirmado;
+    // public $CP;
+    // public $calle;
+    // public $colonia;
+    // public $cargo;
 
     public function __construct($args = []){
         $this->id=$args['id']?? null;
@@ -27,7 +31,12 @@ class Usuario extends ActiveRecord{
         $this->correo=$args['correo']?? '';
         $this->contraseña=$args['contraseña']?? '';        
         $this->token=$args['token']?? '';        
-        $this->confirmado=$args['confirmado']?? 0;        
+        $this->confirmado=$args['confirmado']?? 0; 
+        // Direccion       
+        // $this->calle=$args['calle']?? '';        
+        // $this->colonia=$args['colonia']?? '';        
+        // $this->CP=$args['CP']?? '';        
+        // $this->cargo=$args['cargo']?? '';        
     }
 
     public function validarErrores(){        

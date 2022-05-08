@@ -32,11 +32,17 @@
     <div class="dos_campos">
         <div class="campo">
             <label class="campo__label" for="contraseña">Contraseña: </label>
-            <input class="campo__input" type="password" id="contraseña" required name="usuario[contraseña]" placeholder="Ingrese la contraseña" value="<?php echo sanitizar($usuario->contraseña); ?>">
+            <input class="campo__input" type="password" id="contraseña" required name="usuario[contraseña]" placeholder="Ingrese la contraseña" value="">
+            <?php 
+            // echo sanitizar($usuario->contraseña); 
+            ?>
         </div>
         <div class="campo">
             <label class="campo__label" for="confirmar_contraseña">Repetir contraseña: </label>
-            <input class="campo__input" type="password" id="confirmar_contraseña" required name="usuario[confirmar_contraseña]" placeholder="Confirme la contraseña" value="<?php echo sanitizar($usuario->contraseña); ?>">
+            <input class="campo__input" type="password" id="confirmar_contraseña" required name="usuario[confirmar_contraseña]" placeholder="Confirme la contraseña" value="">
+            <?php 
+            // echo sanitizar($usuario->contraseña); 
+            ?>
         </div>
     </div>
 </fieldset>    

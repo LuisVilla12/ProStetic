@@ -16,4 +16,10 @@ class PaginasControler {
             'inicio'=>$inicio
         ]);
     }
+    public static function inicio(Router $router){
+        $inicio=false;
+        $router->render('agenda/inicio',[
+            'inicio'=>$inicio
+        ]);
+    }
 }
