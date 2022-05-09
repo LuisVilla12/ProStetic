@@ -89,7 +89,7 @@
             <h2 class="tramitar__titulo">Tramita tu cita</h2>
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum tenetur consequuntur laboriosam alias est eos vitae temporibus tempora recusandae suscipit!</p>
             <div class="tramitar__botones">
-                <a href="tramitar_cita.html" class="btn primario">Tramitar cita</a>
+                <a href="/cita" class="btn primario">Tramitar cita</a>
             </div>
         </div>
     </article>

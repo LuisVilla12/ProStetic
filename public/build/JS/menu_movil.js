@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
     MenuDesplegable();
-    botones();
 });
 //FIXME: .hero era la clase
 const hero = document.querySelector('.menu__hidden');

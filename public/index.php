@@ -59,6 +59,9 @@ $router->get('/mensaje',[LoginControler::class,'mensaje']);
 // Confirmar cuenta
 $router->get('/confirmar-cuenta',[LoginControler::class,'confirmarCuenta']);
 $router->post('/confirmar-cuenta',[LoginControler::class,'confirmarCuenta']);
+
+// Agendar cita
+$router->get('/cita',[PaginasControler::class,'cita']);
 $router->comprobarRutas();
 
 

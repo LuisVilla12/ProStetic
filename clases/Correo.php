@@ -19,8 +19,8 @@ class Correo {
         $mail->Host = 'smtp.mailtrap.io';
         $mail->SMTPAuth = true;
         $mail->Port = 2525;
-        $mail->Username = '01c1862e5cca96';
-        $mail->Password = '2f16c0a3281845';
+        $mail->Username = '8b910b18ac7d53';
+        $mail->Password = 'bc208b2dc03361';
 
          // Configurar el contenido del email
         $mail->setFrom($this->correo);//Quien envia el email
@@ -58,8 +58,8 @@ class Correo {
         $mail->Host = 'smtp.mailtrap.io';
         $mail->SMTPAuth = true;
         $mail->Port = 2525;
-        $mail->Username = '01c1862e5cca96';
-        $mail->Password = '2f16c0a3281845';
+        $mail->Username = '8b910b18ac7d53';
+        $mail->Password = 'bc208b2dc03361';
 
          // Configurar el contenido del email
         $mail->setFrom($this->correo);//Quien envia el email

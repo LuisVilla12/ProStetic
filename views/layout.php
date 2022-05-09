@@ -81,8 +81,9 @@ $tipo=$_SESSION['tipo'] ?? 1;
         <p class="footer__copy">&copy; Todos los derechos reservados</p>
     </footer>
     <script src="../build/JS/menu_movil.js"></script>
-    <script src="../build/JS/imagenes.js"></script>
+    <!-- <script src="../build/JS/imagenes.js"></script> -->
     <script src="https://kit.fontawesome.com/d2c5d4b6e4.js" crossorigin="anonymous"></script>
 </body>
 
+<?php echo $script?? '';?>
 </html>

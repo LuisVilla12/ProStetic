@@ -22,4 +22,10 @@ class PaginasControler {
             'inicio'=>$inicio
         ]);
     }
+    public static function cita(Router $router){
+        $inicio=false;
+        $router->render('cita/cita',[
+            'inicio'=>$inicio
+        ]);
+    }
 }
