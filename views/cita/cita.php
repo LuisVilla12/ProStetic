@@ -11,9 +11,7 @@ $nombre=$_SESSION['nombre'] ?? '';
     <div id="paso-1" class="seccion">
         <h2>Servicios</h2>
         <p class="text-center">Elige tus servicios a continuación</p>
-        <div id="servicios" class="listado-servicios">
-            
-        </div>
+        <div id="servicios" class="listado-servicios"></div>
     </div>
     <div id="paso-2" class="seccion">
         <h2>Tus datos y cita</h2>
@@ -26,7 +24,8 @@ $nombre=$_SESSION['nombre'] ?? '';
             </div>
             <div class="campo">
                 <label class="campo__label" for="fecha">Fecha:</label>
-                <input class="campo__input" type="date" name="fecha" id="fecha">
+                <input class="campo__input" type="date" name="fecha" id="fecha" min=<?php echo date('Y-m-d'
+                ,strtotime('+1 day'))?>>
             </div>
             <div class="campo">
                 <label class="campo__label" for="hora">Hora:</label>
@@ -34,7 +33,7 @@ $nombre=$_SESSION['nombre'] ?? '';
             </div>
         </form>
     </div>
-    <div id="paso-3" class="seccion">
+    <div id="paso-3" class="seccion  contenido_resumen">
         <h2>Resumen</h2>        
     </div>
     <div class="paginacion">
@@ -42,6 +41,7 @@ $nombre=$_SESSION['nombre'] ?? '';
         <button id="siguiente" class="btn" > Siguiente&raquo;</button>
     </div>
 </main>
+
 <?php 
     $script="<script src='../build/JS/app.js'></script>"
 ?>

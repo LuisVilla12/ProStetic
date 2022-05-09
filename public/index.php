@@ -7,6 +7,7 @@ use Controllers\UsuariosControler;
 use Controllers\EmpleadoControler;
 use Controllers\ProductoControler;
 use Controllers\LoginControler;
+use Controllers\APIController;
 
 
 $router = new Router();
@@ -62,6 +63,8 @@ $router->post('/confirmar-cuenta',[LoginControler::class,'confirmarCuenta']);
 
 // Agendar cita
 $router->get('/cita',[PaginasControler::class,'cita']);
+// API
+$router->get('/api/servicios',[APIController::class,'index']);
 $router->comprobarRutas();
 
 

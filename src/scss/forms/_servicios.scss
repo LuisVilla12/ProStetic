@@ -1,0 +1,74 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+.listado-servicios {
+    @include m.tablet {
+        @include m.grid(2, 1rem);
+    }
+}
+
+.servicio {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    border: 1px solid v.$blanco;
+    margin-bottom: 1rem;
+    transition: transform .3s ease-in;
+    @include m.tablet {
+        flex-direction: column;
+        align-items: unset;
+        justify-content: unset;
+        padding: 1rem;
+    }
+    &__nombre {
+        text-align: left;
+        @include m.tablet {
+            text-align: center;
+        }
+    }
+    &__precio {
+        color: v.$blanco;
+        font-weight: bold;
+        @include m.tablet {
+            text-align: center;
+        }
+    }
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+}
+
+// Resumen CITA
+.detalles {
+    &__cliente {
+        text-align: center;
+    }
+    &__fecha_hora {
+        display: flex;
+        justify-content: space-around;
+        p {
+            margin: 0;
+        }
+        span {
+            color: v.$primario;
+        }
+    }
+    &__txt {
+        color: v.$primario;
+        font-weight: bold;
+        margin: 0;
+    }
+    &__contenido {
+        display: flex;
+        justify-content: space-between;
+        padding: 0;
+        p {
+            margin: 0;
+        }
+    }
+    &__total {
+        text-align: right;
+    }
+}

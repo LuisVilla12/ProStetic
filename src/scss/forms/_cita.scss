@@ -8,6 +8,14 @@
     }
 }
 
+//TODO: NUEVO
+.seleccionado {
+    background-color: v.$primario;
+    p {
+        color: v.$blanco;
+    }
+}
+
 .mostrar {
     display: block;
 }

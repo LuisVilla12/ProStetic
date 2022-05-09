@@ -1,7 +1,8 @@
 let paso = 1;
-console.log(paso);
 let pasoInicial = 1;
 let pasoFinal = 3;
+let numServicio = 1;
+let total = 0;
 const cita = {
     nombre: '',
     fecha: '',
@@ -18,7 +19,12 @@ function iniciarApp() {
     botonesPaginador(); //Muestro o oculta los botones dependiendo de los tabs
     paginaSiguiente();
     paginaAnterior();
+    // consulta a traves de una api los datos de PHP
     consultarAPI();
+    nombreCliente();
+    seleccionarFecha();
+    seleccionarHora();
+    mostrarResumen();
 }
 
 function tabs() {
@@ -30,6 +36,9 @@ function tabs() {
             paso = parseInt(e.target.dataset.paso);
             mostrarSeccion();
             botonesPaginador();
+            // if (paso === 3) {
+            //     mostrarResumen();
+            // }
         })
 
     })
@@ -63,6 +72,7 @@ function botonesPaginador() {
     } else if (paso === 3) {
         btnAnterior.classList.remove('ocultar_btn');
         btnSiguiente.classList.add('ocultar_btn');
+        mostrarResumen();
     } else {
         btnAnterior.classList.remove('ocultar_btn');
         btnSiguiente.classList.remove('ocultar_btn');
@@ -105,13 +115,13 @@ function mostrarServicios(servicios) {
     const listadoservicios = document.querySelector('#servicios');
 
     servicios.forEach(servicio => {
-        const { id, nombre, precio } = servicio;
+        const { id, nombre, precio_1 } = servicio;
         const nombreServicio = document.createElement('P');
         nombreServicio.textContent = nombre;
         nombreServicio.classList.add('servicio__nombre');
 
         const precioServicio = document.createElement('P');
-        precioServicio.textContent = `$ ${precio}`;
+        precioServicio.textContent = `$ ${precio_1}`;
         precioServicio.classList.add('servicio__precio');
 
         const servicioDIV = document.createElement('DIV');
@@ -123,15 +133,132 @@ function mostrarServicios(servicios) {
         servicioDIV.onclick = function() {
             seleccionarServicio(servicio);
         };
-        // console.log(servicioDIV);
+
         listadoservicios.appendChild(servicioDIV);
     });
-    // listadoservicios.appendChild(servicioDIV);
 }
 
 function seleccionarServicio(servicio) {
+    const { id } = servicio;
     const { servicios } = cita;
-    const divServicio = document.querySelector(`[data-id-servicio="${paso}"]`)
-    cita.servicios = [...servicios, servicio];
-    console.log(cita);
+    const divServicio = document.querySelector(`[data-id-servicio="${id}"]`)
+        // Comprobar si el servicio ya fue agregado
+    if (servicios.some(agregado => agregado.id === id)) {
+        // Servicio ya agregado        
+        cita.servicios = servicios.filter(agregado => agregado.id !== id);
+        divServicio.classList.remove('seleccionado');
+    } else {
+        // Servicio nuevo
+        cita.servicios = [...servicios, servicio];
+        divServicio.classList.add('seleccionado');
+    }
+    // console.log(cita);
+}
+
+function nombreCliente() {
+    const nombreCliente = document.querySelector('#nombre').value;
+    cita.nombre = nombreCliente;
+}
+
+function seleccionarFecha() {
+    const inputFecha = document.querySelector('#fecha');
+    inputFecha.addEventListener('input', (e) => {
+        const dia = new Date(e.target.value).getUTCDay();
+        // 0 es domingo,1 lunes,2 martes... 6 sabado
+        if ([6, 0].includes(dia)) {
+            e.target.value = '';
+            mostrarAlerta('Fines de semana no abrimos', 'error', '.formulario');
+        } else {
+            cita.fecha = e.target.value;
+        }
+    });
+}
+
+function seleccionarHora() {
+    const inputHora = document.querySelector('#hora');
+    inputHora.addEventListener('input', (e) => {
+        cita.hora = e.target.value;
+        console.log(cita);
+    });
+}
+
+function mostrarAlerta(mensaje, tipo, elemento, desaparece = true) {
+    // Si ya existe una alerta
+    const alertaAnterior = document.querySelector('.alerta');
+    if (alertaAnterior) {
+        alertaAnterior.remove();
+    };
+    const alerta = document.createElement('DIV');
+    const mensajeAlerta = document.createElement('P');
+    mensajeAlerta.textContent = mensaje;
+    alerta.classList.add('alerta');
+    alerta.classList.add(tipo);
+    alerta.appendChild(mensajeAlerta);
+    const formulario = document.querySelector(elemento);
+    formulario.appendChild(alerta);
+    if (desaparece) {
+        setTimeout(() => {
+            alerta.remove();
+        }, 3000);
+    }
+
+}
+
+function mostrarResumen() {
+    numServicio = 1;
+    total = 0;
+    const contenidoResumen = document.querySelector('.contenido_resumen');
+    while (contenidoResumen.firstChild) {
+        contenidoResumen.removeChild(contenidoResumen.firstChild);
+    }
+    if (Object.values(cita).includes('') || cita.servicios.length === 0) {
+        // console.log('HAcen falta datos');
+        mostrarAlerta('Hacen falta datos', 'error', '.contenido_resumen', false);
+        return
+    }
+    const { nombre, fecha, hora, servicios } = cita;
+    const nombreCliente = document.createElement('P');
+    nombreCliente.innerHTML = `<span>Nombre: </span> ${nombre}`;
+    nombreCliente.classList.add('detalles__cliente');
+
+    const contenedorFechaHora = document.createElement('DIV');
+    contenedorFechaHora.classList.add('detalles__fecha_hora');
+
+    const fechaCita = document.createElement('P');
+    fechaCita.innerHTML = `<span>Fecha: </span> ${fecha}`;
+
+    const horaCita = document.createElement('P');
+    horaCita.innerHTML = `<span>Hora: </span> ${hora}`;
+
+    contenedorFechaHora.appendChild(fechaCita);
+    contenedorFechaHora.appendChild(horaCita);
+
+    const textServicios = document.createElement('P');
+    textServicios.textContent = "Servicios:";
+    textServicios.classList.add('detalles__txt');
+
+    contenidoResumen.appendChild(nombreCliente);
+    contenidoResumen.appendChild(contenedorFechaHora);
+    contenidoResumen.appendChild(textServicios);
+
+    servicios.forEach(servicio => {
+        const { id, nombre, precio_1 } = servicio;
+        const contenedorServicio = document.createElement('DIV');
+        contenedorServicio.classList.add('detalles__contenido');
+
+        const nombreServicio = document.createElement('P');
+        nombreServicio.innerHTML = `${numServicio}.-<span></span> ${nombre}`;
+
+        const precioServicio = document.createElement('P');
+        precioServicio.innerHTML = `<span>$</span> ${precio_1}`;
+        total = total + parseInt(precio_1);
+        contenedorServicio.appendChild(nombreServicio);
+        contenedorServicio.appendChild(precioServicio);
+        contenidoResumen.appendChild(contenedorServicio);
+        numServicio++;
+    })
+    const totaltxt = document.createElement('P');
+    totaltxt.innerHTML = `<span>Total: </span> $${total}.00`;
+    totaltxt.classList.add('detalles__total');
+    contenidoResumen.appendChild(totaltxt);
 }
