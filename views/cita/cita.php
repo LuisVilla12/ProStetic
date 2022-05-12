@@ -31,6 +31,9 @@ $nombre=$_SESSION['nombre'] ?? '';
                 <label class="campo__label" for="hora">Hora:</label>
                 <input class="campo__input" type="time" name="hora" id="hora">
             </div>
+            <div class="campo">
+                <input type="hidden" name="id" id="id" value="<?php echo $id?>">
+            </div>
         </form>
     </div>
     <div id="paso-3" class="seccion  contenido_resumen">
@@ -43,6 +46,9 @@ $nombre=$_SESSION['nombre'] ?? '';
 </main>
 
 <?php 
-    $script="<script src='../build/JS/app.js'></script>"
+    $script="
+    <script src='//cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+    <script src='../build/JS/app.js'></script>
+    "
 ?>
 

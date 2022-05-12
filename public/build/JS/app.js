@@ -4,6 +4,7 @@ let pasoFinal = 3;
 let numServicio = 1;
 let total = 0;
 const cita = {
+    id: '',
     nombre: '',
     fecha: '',
     hora: '',
@@ -21,6 +22,7 @@ function iniciarApp() {
     paginaAnterior();
     // consulta a traves de una api los datos de PHP
     consultarAPI();
+    idCliente();
     nombreCliente();
     seleccionarFecha();
     seleccionarHora();
@@ -160,6 +162,11 @@ function nombreCliente() {
     cita.nombre = nombreCliente;
 }
 
+function idCliente() {
+    const clienteID = document.querySelector('#id').value;
+    cita.id = clienteID;
+}
+
 function seleccionarFecha() {
     const inputFecha = document.querySelector('#fecha');
     inputFecha.addEventListener('input', (e) => {
@@ -261,4 +268,62 @@ function mostrarResumen() {
     totaltxt.innerHTML = `<span>Total: </span> $${total}.00`;
     totaltxt.classList.add('detalles__total');
     contenidoResumen.appendChild(totaltxt);
+
+    const btnRegistrarCita = document.createElement('BUTTON');
+    btnRegistrarCita.classList.add('btn');
+    btnRegistrarCita.textContent = 'Reservar cita';
+    btnRegistrarCita.onclick = reservarCita;
+
+    contenidoResumen.appendChild(btnRegistrarCita);
+}
+
+async function reservarCita() {
+    const { id, fecha, hora, servicios } = cita;
+    const idServicio = servicios.map(servicio => servicio.id);
+    // console.log(idServicio);
+    // Es la forma de crear el submit con JS
+    const datos = new FormData();
+    datos.append('idUsuario', id);
+    datos.append('fecha', fecha);
+    datos.append('hora', hora);
+    datos.append('servicios', idServicio);
+    try {
+        const url = "http://localhost:3000/api/citas";
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            // body cuerpo de la peticion
+            body: datos
+        });
+        const resultado = await respuesta.json();
+
+        if (resultado.resultado) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Cita registrada',
+                text: 'Tu cita fue registrada correctamente',
+                // footer: '<a href="">Why do I have this issue?</a>'
+                button: 'OK'
+            }).then(() => {
+                setTimeout(() => {
+                    window.location.reload();
+                }, 3000);
+            })
+        };
+
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Tu cita no fue registrada',
+            // footer: '<a href="">Why do I have this issue?</a>'
+            button: 'OK'
+        }).then(() => {
+            setTimeout(() => {
+                window.location.reload();
+            }, 3000);
+        })
+    }
+
+    // console.log([...datos]);
+
 }

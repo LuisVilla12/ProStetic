@@ -3,7 +3,7 @@ namespace Model;
 
 class Servicio extends ActiveRecord{
     protected static $tabla = 'servicios';
-    protected static $columnasDB = ['id','nombre','precio_1','precio_2','duracion'];
+    protected static $atributos_DB = ['id','nombre','precio_1','precio_2','duracion'];
     public $id;
     public $nombre;
     public $precio_1;

@@ -41,7 +41,7 @@ class ActiveRecord{
     }
 
     public function crear(){    
-        $tipo = static::$tabla . 'es';
+        $tipo = static::$tabla ;
         // sanitizar datos
         $atributos=$this->sanitizarDatos();
         // Concatena todas las keys del array consta de dos parametros el "separador", y la funcion;
@@ -52,12 +52,19 @@ class ActiveRecord{
         $query .= "('";
         $query .= "$enlistarValues')";
         // debuguear($query);
-        // exit;
+        // /exit;
         $resultado=self::$db->query($query);
-        if ($resultado) {
-            // Redireccionar el usuario
-            header('Location:/'. $tipo . '/admin?registro=1');
-        }
+        // if ($resultado) {
+        //     // Redireccionar el usuario
+        //     header('Location:/'. $tipo . '/admin?registro=1');
+        // }
+        // Ver la respuesta del fetch
+        // return json_encode(['query'=>$query]);
+        // IMPORTANTE
+        return [
+            'resultado' =>  $resultado,
+            'id' => self::$db->insert_id
+        ];
     }
     // Identifica y une los atributos de la base de datos
     public function iterarDatos() :array{
