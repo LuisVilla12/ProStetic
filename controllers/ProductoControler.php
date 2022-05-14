@@ -21,24 +21,30 @@ class ProductoControler{
 
     public static function crear(Router $router){       
         $producto = new Producto();
-        $proveedores = Proveedor::all();
-        $errores = Producto::getErrores();
+        $proveedores = Proveedor::allProveedores();
+        $alertas = Proveedor::getAlertas();
         $inicio=false;
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Instancia en el objeto
             $producto = new Producto($_POST['producto']);
+            // debuguear($producto);
             // Funcion para validar errores
-            $errores = $producto->validarErrores();
+            $alertas = $producto->validarErrores();
             // Si el arreglo de errores esta vacio
-            if (empty($errores)) {
+            if (empty($alertas)) {
                 // Funcion apara guardar
-                $producto->guardar();
+                $resultado=$producto->guardar();
+                // debuguear($resultado);
+                // exit;
+                if($resultado['resultado']){
+                    header('Location:/inventario/admin');
+                }
             }
         }
         $router->render('inventario/crear', [
             'producto' => $producto,
             'proveedores' => $proveedores,
-            'errores' => $errores,
+            'alertas' => $alertas,
             'inicio'=>$inicio
         ]);
     }
@@ -46,22 +52,25 @@ class ProductoControler{
         $id=validarORediredireccionar('/');
         $producto=Producto::find($id);
         $proveedores = Proveedor::all();
-        $errores = Producto::getErrores();
+        $alertas = Producto::getAlertas();
         $inicio=false;
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $args=$_POST['producto'];
             $producto->sincronizar($args);
          // Crea arreglo de errores
-            $errores = $producto->validarErrores();
+            $alertas = $producto->validarErrores();
              // Si el arreglo de errores esta vacio
-            if (empty($errores)) {
-                $producto->guardar();
+            if (empty($alertas)) {
+                $resultado=$producto->guardar();
+                if($resultado){
+                    header('Location:/inventario/admin');
+                }
             }
         }
         $router->render('inventario/actualizar', [
             'producto' => $producto,
             'proveedores' => $proveedores,
-            'errores' => $errores,            
+            'alertas' => $alertas,            
             'inicio'=>$inicio
         ]);
     }
@@ -74,7 +83,10 @@ class ProductoControler{
                 if(validarTipoDeContenido($tipo)){
                     if($tipo==='producto'){
                         $producto=Producto::find($id);
-                        $producto->eliminar('productos');    
+                        $resultado=$producto->eliminarProducto();    
+                        if($resultado){
+                            header('Location:/inventario/admin');
+                        }
                     }
                 }
             }

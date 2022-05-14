@@ -1,3 +1,4 @@
+
 <main class="contenedor">
     <h1 class="admin__titulo">Administrador de productos</h1>
     <?php if($registro):?>

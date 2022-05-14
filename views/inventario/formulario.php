@@ -1,10 +1,10 @@
 <fieldset>
     <legend>Informacion general</legend>
+    <div class="tres_campos">
     <div class="campo">
         <label class="campo__label" for="nombre">Nombre: </label>
-        <input class="campo__input" type="text" id="nombre" name="producto[nombre]" placeholder="Ingrese nombre del producto" required value="<?php echo sanitizar($producto->nombre);?>">
+        <input class="campo__input" type="text" id="nombre" name="producto[nombre]" placeholder="Ingrese nombre del producto"   value="<?php echo sanitizar($producto->nombre);?>">
     </div>
-    <div class="dos_campos">
     <div class="campo">
         <label class="campo__label" for="proveedor">Proveedor: </label>
         <select name="producto[idProveedor]" class="campo__input" id="proveedor">
@@ -19,7 +19,7 @@
     </div>
     <div class="campo">
         <label class="campo__label" for="marca">Marca: </label>
-        <input class="campo__input" type="text" id="marca" name="producto[marca]"  required placeholder="Ingrese la marca del producto" value="<?php echo sanitizar($producto->marca); ?>">
+        <input class="campo__input" type="text" id="marca" name="producto[marca]"    placeholder="Ingrese la marca del producto" value="<?php echo sanitizar($producto->marca); ?>">
     </div>
     </div>
     
@@ -29,15 +29,15 @@
     <div class="tres_campos">
         <div class="campo">
             <label class="campo__label" for="precioVenta">Precio Venta: </label>
-            <input class="campo__input" type="number" id="precioVenta" required name="producto[precioVenta]" placeholder="Ingrese el precio de venta" step="0.01" value="<?php echo sanitizar($producto->precioVenta); ?>">
+            <input class="campo__input" type="number" id="precioVenta"   name="producto[precioVenta]" placeholder="Ingrese el precio de venta" step="0.01" value="<?php echo sanitizar($producto->precioVenta); ?>">
         </div>
         <div class="campo">
             <label class="campo__label" for="precioCompra">Precio Compra: </label>
-            <input class="campo__input" type="number" id="precioCompra" required name="producto[precioCompra]" placeholder="Ingrese el precio de compra" step="0.01" value="<?php echo sanitizar($producto->precioCompra); ?>">
+            <input class="campo__input" type="number" id="precioCompra"   name="producto[precioCompra]" placeholder="Ingrese el precio de compra" step="0.01" value="<?php echo sanitizar($producto->precioCompra); ?>">
         </div>
         <div class="campo">
             <label class="campo__label" for="cantidad">Cantidad: </label>
-            <input class="campo__input" type="number" id="cantidad" required name="producto[cantidad]" placeholder="Ingrese la cantidad" value="<?php echo sanitizar($producto->cantidad); ?>">
+            <input class="campo__input" type="number" id="cantidad"   min="0" name="producto[cantidad]" placeholder="Ingrese la cantidad" value="<?php echo sanitizar($producto->cantidad); ?>">
         </div>
     </div>
     

@@ -1,5 +1,6 @@
 <?php
 namespace Model;
+
 class Proveedor extends ActiveRecord{
     // Define la tabla
     protected static $tabla='proveedor';
