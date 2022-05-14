@@ -1,5 +1,6 @@
 <fieldset>
     <legend>Informacion general</legend>
+    <div class="dos_campos">
     <div class="campo">
         <label class="campo__label" for="nombre">Nombre: </label>
         <input class="campo__input" type="text" id="nombre" name="proveedor[nombre]" placeholder="Ingrese el nombre del proveedor" value="<?php echo sanitizar($proveedor->nombre); ?>">
@@ -8,6 +9,7 @@
         <label class="campo__label" for="RFC">RFC: </label>
         <input class="campo__input" type="text" id="RFC" name="proveedor[RFC]" placeholder="Ingrese el RFC del proveedor" value="<?php echo sanitizar($proveedor->RFC); ?>">
     </div>
+    </div>    
 </fieldset>
 <fieldset>
     <legend>Dirección</legend>

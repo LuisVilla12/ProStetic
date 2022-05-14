@@ -227,12 +227,22 @@ function mostrarResumen() {
     const nombreCliente = document.createElement('P');
     nombreCliente.innerHTML = `<span>Nombre: </span> ${nombre}`;
     nombreCliente.classList.add('detalles__cliente');
+    // formatear la fecha
+    const fechaObj = new Date(fecha);
+    const mes = fechaObj.getMonth();
+    const dia = fechaObj.getDate() + 2;
+    const año = fechaObj.getFullYear();
+
+    const fechaUTC = new Date(Date.UTC(año, mes, dia));
+    const opciones = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+    const fechaFormateada = fechaUTC.toLocaleDateString('es-MX', opciones);
+
 
     const contenedorFechaHora = document.createElement('DIV');
     contenedorFechaHora.classList.add('detalles__fecha_hora');
 
     const fechaCita = document.createElement('P');
-    fechaCita.innerHTML = `<span>Fecha: </span> ${fecha}`;
+    fechaCita.innerHTML = `<span>Fecha: </span> ${fechaFormateada}`;
 
     const horaCita = document.createElement('P');
     horaCita.innerHTML = `<span>Hora: </span> ${hora}`;
@@ -276,8 +286,8 @@ function mostrarResumen() {
 
     contenidoResumen.appendChild(btnRegistrarCita);
 }
-
 async function reservarCita() {
+
     const { id, fecha, hora, servicios } = cita;
     const idServicio = servicios.map(servicio => servicio.id);
     // console.log(idServicio);
@@ -295,6 +305,7 @@ async function reservarCita() {
             body: datos
         });
         const resultado = await respuesta.json();
+        console.log(resultado.resultado);
 
         if (resultado.resultado) {
             Swal.fire({

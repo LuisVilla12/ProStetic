@@ -9,7 +9,7 @@ use Clases\Correo;
 
 class LoginControler {
     public static function login( Router $router) {
-        $errores = [];
+        $alertas = [];
         $inicio=false;
         $usuario= new Usuario;
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -40,12 +40,12 @@ class LoginControler {
                     }
                 }
             }else{
-                Usuario::setErrores('Correo no registrado');
+                Usuario::setAlerta('error','Correo no registrado');
             }
         }
-        $errores=Usuario::getErrores();
+        $alertas=Usuario::getAlertas();
         $router->render('auth/login', [
-            'errores' => $errores,
+            'alertas' => $alertas,
             'inicio'=>$inicio,
             'usuario'=>$usuario
         ]); 
@@ -53,25 +53,25 @@ class LoginControler {
     
     public static function crearCuenta(Router $router) {
         $usuario = new Usuario();
-        $errores = Usuario::getErrores();
+        $alertas = Usuario::getAlertas();
         $inicio=false;
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $contraseña=$_POST['usuario']['contraseña'];
             $confirmar_contraseña=$_POST['usuario']['confirmar_contraseña'];
             $usuario = new Usuario($_POST['usuario']);
             $usuario->contraseña=password_hash($usuario->contraseña,PASSWORD_BCRYPT);
-            // Funcion para validar errores
-            $errores = $usuario->validarErrores();
+            // Funcion para validar alertas
+            $alertas = $usuario->validarErrores();
 
             if(!($contraseña===$confirmar_contraseña)){
-                $errores[]='Contraseñas no coinciden';
+                $alertas[]='Contraseñas no coinciden';
             }
-            // Si el arreglo de errores esta vacio
-            if (empty($errores)) {                
+            // Si el arreglo de alertas esta vacio
+            if (empty($alertas)) {                
                 // verificar que cuenta no este registrada
                 $resultado=$usuario->validaCoreoRegistrado();
                 if($resultado->num_rows){
-                    $errores=Usuario::getErrores();
+                    $alertas=Usuario::getAlertas();
                 }else{
                     // Generar token
                     $usuario->generarToken();
@@ -87,28 +87,28 @@ class LoginControler {
         }
         $router->render('auth/crear-cuenta', [
             'usuario' => $usuario,
-            'errores' => $errores,
+            'alertas' => $alertas,
             'inicio'=>$inicio
         ]);
     
     }
     public static function confirmarCuenta(Router $router){
         $inicio=false;
-        $errores=[];
+        $alertas=[];
         $token=sanitizar($_GET['token']);
         $usuario=Usuario::findWhere('token',$token);
         if(empty($usuario)){
-            Usuario::setErrores('Token no valido');
+            Usuario::setAlerta('error','Token no valido');
         }
         else{
             $usuario->confirmado=1;
             $usuario->guardar();
             header('Location:/login');
         }
-        $errores=Usuario::getErrores();
+        $alertas=Usuario::getAlertas();
         $router->render('auth/confirmar-cuenta',[
             'inicio'=>$inicio,
-            'errores'=>$errores
+            'alertas'=>$alertas
         ]);
     }
     public static function mensaje(Router $router){

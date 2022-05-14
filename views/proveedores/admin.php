@@ -10,7 +10,7 @@
         <?php endif ?>
     <div class="space_between">
         <a href="/admin" class="btn">Volver</a>
-        <a href="/proveedores/crear" class="btn">Añadir propiedad</a>
+        <a href="/proveedores/crear" class="btn">Añadir proveedor</a>
     </div>
     
     <table class="lista">

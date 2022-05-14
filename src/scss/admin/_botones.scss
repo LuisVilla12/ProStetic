@@ -10,13 +10,14 @@
     @include m.tablet {
         display: inline-block;
     }
+    &:hover {
+        // animation: animacionBTN 3s ease-in-out;
+        cursor: pointer;
+    }
     &.amarillo {
         background-color: rgb(204, 173, 36);
         margin: 1rem 0;
         padding: .8rem 0;
-        &:hover {
-            animation: animacionBTN 3s ease-in-out;
-        }
         i {
             display: block;
             margin-top: 1rem;

@@ -64,8 +64,8 @@ $router->post('/confirmar-cuenta',[LoginControler::class,'confirmarCuenta']);
 // Agendar cita
 $router->get('/cita',[PaginasControler::class,'cita']);
 // API
-$router->get('/api/servicios',[APIController::class,'index']);
 $router->post('/api/citas',[APIController::class,'guardar']);
+$router->get('/api/servicios',[APIController::class,'index']);
 $router->comprobarRutas();
 
 

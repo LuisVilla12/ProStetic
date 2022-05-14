@@ -2,7 +2,7 @@
 namespace Model;
 class Admin extends ActiveRecord{
     protected static $tabla="usuario";
-    protected static $atributos_DB=['idusuarios','correo','contraseña','usuario'];
+    protected static $columnasDB=['idusuarios','correo','contraseña','usuario'];
     public $idusuarios;
     public $correo;
     public $contraseña;
@@ -15,12 +15,12 @@ class Admin extends ActiveRecord{
     }
     public function validarErrores(){
         if (!$this->correo) {
-            self::$errores[] = 'Debe ingresar un correo';
+            self::$alertas[''] = 'Debe ingresar un correo';
         }
         if (!$this->contraseña) {
-            self::$errores[] = 'Debe ingresar una contraseña';
+            self::$alertas['errores'] = 'Debe ingresar una contraseña';
         }
-        return self::$errores;
+        return self::$alertas;
     }
 }
 

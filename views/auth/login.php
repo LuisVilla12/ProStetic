@@ -11,11 +11,9 @@
                 <input type="password" id="contraseña" class="campo__input" name="contraseña" required>
             </div>
         </fieldset>
-        <?php foreach ($errores as $error) : ?>
-            <div class="alerta error">
-                <p><?php echo $error ?></p>
-            </div>
-        <?php endforeach ?>
+        <?php
+            include_once __DIR__ . '/../templates/alertas.php';
+        ?>
         <div class="centrar_campos">
             <input type="submit" value="Iniciar sesión" class="btn-enviar txt-center">
         </div>

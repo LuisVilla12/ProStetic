@@ -1,5 +1,6 @@
 <?php 
 $nombre=$_SESSION['nombre'] ?? '';
+$id=$_SESSION['id'];       
 ?>
 <h1 class="titulo">Registrar nueva cita</h1>
 <main class="contenedor">
