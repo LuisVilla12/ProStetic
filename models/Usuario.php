@@ -4,7 +4,7 @@ class Usuario extends ActiveRecord{
     // Define la tabla
     protected static $tabla='usuario';
     // Define los atributos en un arreglo
-    protected static $atributos_DB=['id','idTipoUsuario','nombre','apellidoPat','apellidoMat','telefono','correo','contraseña','token','confirmado'];
+    protected static $columnasDB=['id','idTipoUsuario','nombre','apellidoPat','apellidoMat','telefono','correo','contraseña','token','confirmado'];
 
     public $id;
     public $idTipoUsuario;
@@ -16,11 +16,8 @@ class Usuario extends ActiveRecord{
     public $contraseña;    
     public $token;
     public $confirmado;
-    // public $CP;
-    // public $calle;
-    // public $colonia;
-    // public $cargo;
-
+    // public $estatus;
+    
     public function __construct($args = []){
         $this->id=$args['id']?? null;
         $this->idTipoUsuario=$args['idTipoUsuario']?? 1;
@@ -32,6 +29,7 @@ class Usuario extends ActiveRecord{
         $this->contraseña=$args['contraseña']?? '';        
         $this->token=$args['token']?? '';        
         $this->confirmado=$args['confirmado']?? 0; 
+        // $this->estatus=$args['estatus']?? 1; 
         // Direccion       
         // $this->calle=$args['calle']?? '';        
         // $this->colonia=$args['colonia']?? '';        
@@ -40,26 +38,25 @@ class Usuario extends ActiveRecord{
     }
 
     public function validarErrores(){        
-        if (!$this->nombre) {
-            self::$errores[] = 'Debe ingresar su nombre';
-        }
-        if (!$this->apellidoPat) {
-            self::$errores[] = 'Debe ingresar su apellido Paterno';
-        }
-        if (!$this->apellidoMat) {
-            self::$errores[] = 'Debe ingresar su apellido Materno';
-        }
-        if (!$this->telefono) {
-            self::$errores[] = 'Debe ingresar un n° de telefono';
-        }
-        if (!$this->correo) {
-            self::$errores[] = 'Debe ingresar un correo electronico';
-        }
         if (!$this->contraseña) {
-            self::$errores[] = 'Debe ingresar una contraseña';
+            self:: $alertas['error'][] = 'Debe ingresar una contraseña';
+        }        
+        if (!$this->nombre|| strlen($this->nombre)<2) {
+            self:: $alertas['error'][] = 'Debe ingresar su nombre';
+        }        
+        if (!$this->apellidoPat|| strlen($this->apellidoPat)<3) {
+            self:: $alertas['error'][] = 'Debe ingresar su apellido Paterno';
         }
-        
-        return self::$errores;
+        if (!$this->apellidoMat|| strlen($this->apellidoMat)<3) {
+            self:: $alertas['error'][] = 'Debe ingresar su apellido Materno';
+        }
+        if (!$this->correo|| strlen($this->correo)<7) {
+            self:: $alertas['error'][] = 'Debe ingresar un correo electronico';
+        }
+        if (!$this->telefono|| strlen($this->telefono)<4) {
+            self:: $alertas['error'][] = 'Debe ingresar un n° de telefono';
+        }        
+        return self::$alertas;
     }
     
     public function existeUsuario() {
@@ -67,7 +64,7 @@ class Usuario extends ActiveRecord{
         $query = "SELECT * FROM " . self::$tabla . " WHERE correo = '" . $this->correo . "' LIMIT 1";
         $resultado = self::$db->query($query);
         if(!$resultado->num_rows) {
-            self::$errores[] = 'El Usuario No Existe';
+            self:: $alertas['error'][] = 'El Usuario No Existe';
             return;
         }
         return $resultado;
@@ -76,7 +73,7 @@ class Usuario extends ActiveRecord{
         $query="SELECT * FROM " . self::$tabla . " WHERE correo = '" .$this->correo . "' LIMIT 1";
         $resultado = self::$db->query($query);
         if($resultado->num_rows){
-            self::$errores[]='El correo ya ha sido registrado';
+            self:: $alertas['error'][]='El correo ya ha sido registrado';
         }
         return $resultado;
     }
@@ -84,7 +81,7 @@ class Usuario extends ActiveRecord{
     public function comprobarPassword($contraseña){
         $verifica= password_verify($contraseña,$this->contraseña);
         if(!$verifica){
-            self::$errores[]='La contraseña es incorrecta';
+            self:: $alertas['error'][]='La contraseña es incorrecta';
         }else{
             return true;
         }
@@ -104,7 +101,7 @@ class Usuario extends ActiveRecord{
 
     public function cuentaConfirmada(){
         if($this ->confirmado === '0'){
-            self::$errores[]='Usuario no esta autenticado';
+            self:: $alertas['error'][]='Usuario no esta autenticado';
         }else{
             return true;
         }
@@ -116,6 +113,12 @@ class Usuario extends ActiveRecord{
         return $resultado;
     }
     public static function allClientes(){
+        // Query
+        $query = "SELECT * FROM " .  static::$tabla . " WHERE idTipoUsuario = 1";
+        $resultado=self::consultarSQL($query);
+        return $resultado;
+    }
+    public static function eliminarEmpleados(){
         // Query
         $query = "SELECT * FROM " .  static::$tabla . " WHERE idTipoUsuario = 1";
         $resultado=self::consultarSQL($query);

@@ -20,50 +20,68 @@ class UsuariosControler{
 
     public static function crear(Router $router){       
         $usuario = new Usuario();
-        $errores = Usuario::getErrores();
+        $alertas = Usuario::getAlertas();
         $inicio=false;
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $usuario = new Usuario($_POST['usuario']);
+            $alertas = $usuario->validarErrores();
+
             $contraseña=$_POST['usuario']['contraseña'];
             $confirmar_contraseña=$_POST['usuario']['confirmar_contraseña'];
-
-            $usuario = new Usuario($_POST['usuario']);
-            $usuario->contraseña=password_hash($usuario->contraseña,PASSWORD_BCRYPT);
-            // Funcion para validar errores
-            $errores = $usuario->validarErrores();
-
+            if(!$contraseña===""){
+                $alertas['error'][]='Debe ingresar una contraseña';    
+            }        
             if(!($contraseña===$confirmar_contraseña)){
-                $errores[]='Contraseñas no coinciden';
-            }
+                $alertas['error'][]='Contraseñas no coinciden';
+            }                     
             // Si el arreglo de errores esta vacio
-            if (empty($errores)) {
+            if (empty($alertas)) {
+                $usuario->contraseña=password_hash($usuario->contraseña,PASSWORD_BCRYPT);
+                $usuario->confirmado=1;
                 // Funcion apara guardar
-                $usuario->guardar();
+                $resultado=$usuario->guardar();
+                if($resultado){
+                    header('Location: /usuarios/admin');
+                }
             }
         }
         $router->render('usuarios/crear', [
             'usuario' => $usuario,
-            'errores' => $errores,
+            'alertas' => $alertas,
             'inicio'=>$inicio
         ]);
     }
     public static function actualizar(Router $router){
-        $id=validarORediredireccionar('/');
+        $id=validarORediredireccionar('/usuarios/admin');
         $usuario=Usuario::find($id);
-        $errores = Usuario::getErrores();
+        $contraseña=$usuario->contraseña;
+        debuguear($contraseña);
+        $alertas = Usuario::getAlertas();
         $inicio=false;
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $args=$_POST['usuario'];
-            $usuario->sincronizar($args);
-         // Crea arreglo de errores
-            $errores = $usuario->validarErrores();
+            $usuario->sincronizar($args);            
+            // si el usuario no ingresa una contraseña nueva se le asigna nuevamente la anterior
+            if(!$usuario->contraseña){
+                $usuario->contraseña=$contraseña;
+            }else{
+                // en caso contrario hashea la nueva
+                $usuario->contraseña=password_hash($usuario->contraseña,PASSWORD_BCRYPT);
+            }            
+            // Crea arreglo de errores            
+            $alertas = $usuario->validarErrores();  
              // Si el arreglo de errores esta vacio
-            if (empty($errores)) {
-                $usuario->guardar();
+            if (empty($alertas)) {                                
+                // Funcion apara guardar
+                $resultado=$usuario->guardar();
+                if($resultado){
+                    header('Location: /usuarios/admin');
+                }
             }
         }
         $router->render('usuarios/actualizar', [
             'usuario' => $usuario,
-            'errores' => $errores,
+            'alertas' => $alertas,
             'inicio'=>$inicio
         ]);
     }
@@ -76,7 +94,10 @@ class UsuariosControler{
                 if(validarTipoDeContenido($tipo)){
                     if($tipo==='usuario'){
                         $usuarios=Usuario::find($id);
-                        $usuarios->eliminar('usuarios');    
+                        $resultado=$usuarios->eliminar('eliminar');    
+                        if($resultado){
+                            header('Location: /usuarios/admin');
+                        }   
                     }
                 }
             }

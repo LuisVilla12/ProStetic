@@ -49,6 +49,7 @@ class Producto extends ActiveRecord{
     }
     public static function allProductos() {
         // $query = "SELECT * FROM " . static::$tabla . " WHERE estadoProveedor = ". 1;
+        // $query="SELECT p.id,p.nombre, v.nombre,p.cantidad,p.precioVenta from producto as p INNER join proveedor as v on p.idProveedor=v.id";
         // $resultado = self::consultarSQL($query);
         // return $resultado;
     }

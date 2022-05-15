@@ -9,6 +9,7 @@ class ActiveRecord {
 
     // Alertas y Mensajes
     protected static $alertas = [];
+    protected static $alertas2 = [];
     
     // Definir la conexión a la BD - includes/database.php
     public static function setDB($database) {
@@ -143,8 +144,8 @@ class ActiveRecord {
         // Ver la respuesta del fetch
         // return json_encode(['query'=>$query]);
         // debuguear($_POST);
-        // debuguear($query);
-        // exit;
+        debuguear($query);
+        
         
         // Resultado de la consulta
         $resultado = self::$db->query($query);        
@@ -171,7 +172,7 @@ class ActiveRecord {
         $query .=  join(', ', $valores );
         $query .= " WHERE id = '" . self::$db->escape_string($this->id) . "' ";
         $query .= " LIMIT 1 "; 
-
+        debuguear($query);
         // Actualizar BD
         $resultado = self::$db->query($query);
         return $resultado;

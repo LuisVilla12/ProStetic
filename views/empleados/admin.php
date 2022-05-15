@@ -33,7 +33,7 @@
                     <td>    
                         <div class="dos_columnas">
                             <div class="div">
-                                <a href="/empleados/actualizar?id=<?php echo $usuario->id; ?>" class="btn amarillo"><i class="fa-solid fa-pen"></i></a>
+                                <a href="/empleados/actualizar?id=<?php echo $usuario->id; ?>" class="btn amarillo"><i class="fa-solid fa-pen"></i></a>                            
                             </div>
                             <div class="">
                                 <form method="POST" class="w-100" action="/empleados/eliminar">

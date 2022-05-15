@@ -29,9 +29,9 @@ $router->post('/usuarios/eliminar',[UsuariosControler::class,'eliminar']);
 $router->get('/empleados/admin',[EmpleadoControler::class,'index']);
 $router->get('/empleados/crear',[EmpleadoControler::class,'crear']);
 $router->post('/empleados/crear',[EmpleadoControler::class,'crear']);
-// $router->get('/usuarios/actualizar',[EmpleadoControler::class,'actualizar']);
-// $router->post('/usuarios/actualizar',[EmpleadoControler::class,'actualizar']);
-// $router->post('/usuarios/eliminar',[EmpleadoControler::class,'eliminar']);
+$router->get('/empleados/actualizar',[EmpleadoControler::class,'actualizar']);
+$router->post('/empleados/actualizar',[EmpleadoControler::class,'actualizar']);
+$router->post('/empleados/eliminar',[EmpleadoControler::class,'eliminar']);
 
 // Productos
 $router->get('/inventario/admin',[ProductoControler::class,'index']);
