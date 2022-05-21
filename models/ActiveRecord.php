@@ -119,6 +119,7 @@ class ActiveRecord {
     // Busca un registro por su id
     public static function findWhere($columna,$valor) {
         $query = "SELECT * FROM " . static::$tabla  ." WHERE ${columna} = '${valor}'";
+        // debuguear($query);
         $resultado = self::consultarSQL($query);
         return array_shift( $resultado ) ;
     }
@@ -144,8 +145,7 @@ class ActiveRecord {
         // Ver la respuesta del fetch
         // return json_encode(['query'=>$query]);
         // debuguear($_POST);
-        debuguear($query);
-        
+        // debuguear($query);
         
         // Resultado de la consulta
         $resultado = self::$db->query($query);        
@@ -183,6 +183,11 @@ class ActiveRecord {
         $query = "DELETE FROM "  . static::$tabla . " WHERE id = " . self::$db->escape_string($this->id) . " LIMIT 1";
         $resultado = self::$db->query($query);
         return $resultado;
+    }
+    // Consulta general SQL
+    public static function SQL($consulta) {
+        $resultado = self::consultarSQL($consulta);
+        return $resultado ;
     }
 
 }

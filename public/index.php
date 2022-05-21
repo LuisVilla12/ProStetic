@@ -1,6 +1,7 @@
 <?php 
 require_once __DIR__ . '/../includes/app.php';
 use MVC\Router;
+use Controllers\AdminController;
 use Controllers\ProveedorControler;
 use Controllers\PaginasControler;
 use Controllers\UsuariosControler;
@@ -66,6 +67,7 @@ $router->get('/cita',[PaginasControler::class,'cita']);
 // API
 $router->post('/api/citas',[APIController::class,'guardar']);
 $router->get('/api/servicios',[APIController::class,'index']);
+$router->get('/agenda',[AdminController::class,'index']);
 $router->comprobarRutas();
 
 

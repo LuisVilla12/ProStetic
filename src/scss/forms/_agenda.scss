@@ -1,0 +1,50 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+.agenda {
+    margin: 1rem 0;
+    &__cita {
+        border-radius: 3rem;
+        padding: 2rem 3rem;
+        &:nth-of-type(n+1) {
+            background-color: v.$secundario;
+            p {
+                margin: 0;
+                color: v.$negro;
+                font-weight: bold;
+                span {
+                    font-weight: normal;
+                }
+            }
+        }
+        &:nth-of-type(2n) {
+            background-color: v.$primario;
+            p {
+                margin: 0;
+                color: v.$blanco;
+                font-weight: bold;
+                span {
+                    font-weight: normal;
+                }
+            }
+        }
+        margin-bottom: 2rem;
+    }
+    &__datos {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__nombre {
+        text-align: center;
+    }
+    &__titulo {
+        margin: 1rem 0;
+        display: inline-block;
+    }
+    &__servicio_nombre {
+        display: inline-block;
+    }
+    &__total {
+        display: flex;
+        justify-content: flex-end;
+    }
+}

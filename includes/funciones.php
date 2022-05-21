@@ -63,3 +63,15 @@ function validarORediredireccionar($url){
     }
     return $id;
 }
+function esUltimo($actual,$proximo){
+    if($actual !==$proximo){
+        return true;
+    }
+    return false;
+}
+// Autenticar
+function estaAutenticado(){
+    if(!isset($_SESSION['login'])){
+        header('Location: /');
+    }
+}

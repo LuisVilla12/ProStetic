@@ -15,6 +15,8 @@ class LoginControler {
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             $usuario = new Usuario($_POST);
             $usuarioEncontrado=$usuario->findWhere('correo',$usuario->correo);
+            debuguear($usuarioEncontrado);
+            // exit;
             if($usuarioEncontrado){
                 // verifica la contraseña
                 $resultado_verificacion=$usuarioEncontrado->comprobarPassword($usuario->contraseña);

@@ -56,7 +56,7 @@ $tipo=$_SESSION['tipo'] ?? 1;
                 <?php endif?>
                 <?php if($tipo=='2') :?>
                     <a href="/admin" class="nav__a"><i class="fa-solid fa-home"></i>Menú</a>
-                    <a href="/agenda/inicio" class="nav__a"><i class="fa-solid fa-calendar"></i>Agenda</a>
+                    <a href="/agenda" class="nav__a"><i class="fa-solid fa-calendar"></i>Agenda</a>
                     <a href="/proveedores/admin" class="nav__a"><i class="fa-solid fa-truck-field"></i>Proveedores</a>
                     <a href="/inventario/admin" class="nav__a"><i class="fa-solid fa-boxes-stacked"></i>Inventario</a>
                     <!-- <a href="/usuarios/admin" class="nav__a"><i class="fa-solid fa-users"></i>Usuarios</a> -->

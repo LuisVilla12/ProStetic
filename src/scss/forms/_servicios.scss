@@ -22,17 +22,28 @@
         padding: 1rem;
     }
     &__nombre {
+        color: darken(v.$primario, 50%);
         text-align: left;
         @include m.tablet {
             text-align: center;
         }
     }
     &__precio {
-        color: v.$blanco;
+        margin: 0;
+        color: v.$primario;
         font-weight: bold;
         @include m.tablet {
             text-align: center;
         }
+    }
+    &__detalles {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__duracion {
+        color: v.$primario;
+        font-weight: bold;
     }
     &:hover {
         cursor: pointer;

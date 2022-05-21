@@ -1,19 +1,15 @@
 <h1 class="titulo">Crear cuenta</h1>
 <p class="descripcion">Ingresa tus datos</p>
-<?php foreach ($errores as $error) : ?>
-    <div class="alerta error">
-        <p><?php echo $error ?></p>
-    </div>
-<?php endforeach ?>
+
 <main class="contenedor">    
     <form action="" class="formulario" method="POST">
     <fieldset>
         <legend>Informacion general</legend>
+        <div class="tres_campos">
         <div class="campo">
             <label class="campo__label" for="nombre">Nombre: </label>
             <input class="campo__input" type="text" id="nombre" name="usuario[nombre]" placeholder="Ingrese su nombre(s)" required value="<?php echo sanitizar($usuario->nombre);?>">
-        </div>
-        <div class="dos_campos">
+        </div>        
         <div class="campo">
             <label class="campo__label" for="apellidoPat">Apellido Paterno: </label>
             <input class="campo__input" required type="text" id="apellidoPat" name="usuario[apellidoPat]" placeholder="Ingrese su apellido paterno" value="<?php echo sanitizar($usuario->apellidoPat); ?>">
@@ -22,7 +18,7 @@
             <label class="campo__label" for="apellidoMat">Apellido Materno: </label>
             <input class="campo__input" type="text" id="apellidoMat" name="usuario[apellidoMat]"  required placeholder="Ingrese su apellido materno" value="<?php echo sanitizar($usuario->apellidoMat); ?>">
         </div>
-        </div>    
+        </div>
     </fieldset>
     <fieldset>
     <legend>Datos de contacto</legend>
@@ -33,7 +29,7 @@
         </div>
         <div class="campo">
             <label class="campo__label" for="telefono">Telefono: </label>
-            <input class="campo__input" type="text" id="telefono" required name="usuario[telefono]" placeholder="Ingrese la telefono" value="<?php echo sanitizar($usuario->telefono); ?>">
+            <input class="campo__input" type="number" id="telefono" required name="usuario[telefono]" placeholder="Ingrese la telefono" value="<?php echo sanitizar($usuario->telefono); ?>">
         </div>
     </div>
     <div class="dos_campos">

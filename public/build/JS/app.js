@@ -117,21 +117,32 @@ function mostrarServicios(servicios) {
     const listadoservicios = document.querySelector('#servicios');
 
     servicios.forEach(servicio => {
-        const { id, nombre, precio_1 } = servicio;
+        const { id, nombre, precio_1, duracion } = servicio;
         const nombreServicio = document.createElement('P');
         nombreServicio.textContent = nombre;
         nombreServicio.classList.add('servicio__nombre');
+
+        const detallesServicio = document.createElement('DIV');
+        detallesServicio.classList.add('servicio__detalles');
 
         const precioServicio = document.createElement('P');
         precioServicio.textContent = `$ ${precio_1}`;
         precioServicio.classList.add('servicio__precio');
 
+        const duracionServicio = document.createElement('P');
+        duracionServicio.innerHTML = `<span><i class="fa-solid fa-clock"></i></span> ${duracion}min`;
+        duracionServicio.classList.add('servicio__duracion');
+
         const servicioDIV = document.createElement('DIV');
         servicioDIV.classList.add('servicio');
         servicioDIV.dataset.idServicio = id;
 
+        detallesServicio.appendChild(precioServicio);
+        detallesServicio.appendChild(duracionServicio);
+
+
         servicioDIV.appendChild(nombreServicio);
-        servicioDIV.appendChild(precioServicio);
+        servicioDIV.appendChild(detallesServicio);
         servicioDIV.onclick = function() {
             seleccionarServicio(servicio);
         };
@@ -259,7 +270,7 @@ function mostrarResumen() {
     contenidoResumen.appendChild(textServicios);
 
     servicios.forEach(servicio => {
-        const { id, nombre, precio_1 } = servicio;
+        const { id, nombre, precio_1, duracion } = servicio;
         const contenedorServicio = document.createElement('DIV');
         contenedorServicio.classList.add('detalles__contenido');
 
@@ -269,8 +280,12 @@ function mostrarResumen() {
         const precioServicio = document.createElement('P');
         precioServicio.innerHTML = `<span>$</span> ${precio_1}`;
         total = total + parseInt(precio_1);
+
+
+
         contenedorServicio.appendChild(nombreServicio);
         contenedorServicio.appendChild(precioServicio);
+
         contenidoResumen.appendChild(contenedorServicio);
         numServicio++;
     })
@@ -290,8 +305,7 @@ async function reservarCita() {
 
     const { id, fecha, hora, servicios } = cita;
     const idServicio = servicios.map(servicio => servicio.id);
-    // console.log(idServicio);
-    // Es la forma de crear el submit con JS
+
     const datos = new FormData();
     datos.append('idUsuario', id);
     datos.append('fecha', fecha);
@@ -317,7 +331,7 @@ async function reservarCita() {
             }).then(() => {
                 setTimeout(() => {
                     window.location.reload();
-                }, 3000);
+                }, 1000);
             })
         };
 

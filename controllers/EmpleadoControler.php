@@ -78,6 +78,7 @@ class EmpleadoControler{
         $domicilio=Domicilio::find($id);        
         $alertas = Usuario::getAlertas();                
         $inicio=false;
+        debuguear($usuario);
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $args=$_POST['usuario'];
             $args=$_POST['domicilio'];
@@ -86,20 +87,21 @@ class EmpleadoControler{
             $domicilio->sincronizar($args);            
             // debuguear($domicilio);
             // debuguear($contraseña);            
-            // debuguear($usuario);
+            debuguear($usuario);
             // si el usuario no ingresa una contraseña nueva se le asigna nuevamente la anterior
-            if(!$contraseña){
+            if($contraseña === ""){
                 $contraseña=$usuario->contraseña;
                 // debuguear($usuario->contraseña);
                 $usuario->contraseña=$contraseña; 
                 // debuguear($usuario->contraseña);               
-                echo 'VIEJA';
+                echo 'VIEJA';                
             }else{
                 // en caso contrario hashea la nueva
                 $usuario->contraseña=password_hash($usuario->contraseña,PASSWORD_BCRYPT);
                 echo 'NUEVA';
             }                   
-            debuguear($usuario);            
+            debuguear($usuario);    
+            exit;        
             // Crea arreglo de errores
             $alertas = $usuario->validarErrores();
             // valida
