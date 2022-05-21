@@ -29,8 +29,16 @@ class APIController{
         $respuesta=[
         'resultado'=>$resultado   
         ];
-        echo json_encode($respuesta);
-
-        
+        echo json_encode($respuesta);       
+    }
+    public static function asistio(){
+        if($_SERVER['REQUEST_METHOD']==='POST'){
+            $id=$_POST['id'];
+            $cita= Cita::find($id);
+            $resultado=$cita->asistir();
+            // debuguear($resultado);
+            // exit;
+            header('Location: '. $_SERVER['HTTP_REFERER']);            
+        }
     }
 }

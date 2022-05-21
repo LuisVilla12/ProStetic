@@ -9,40 +9,64 @@
     </div>
 </form>
 </div>
+
 <div id="citas-admin">
     <?php if(count($citas)===0):?>
         <p>No hay citas</p>
     <?php endif;?>
-    <div class="agenda">
+    
         <?php 
             $idCita=0;
-            foreach ($citas as $key=>$cita):
-        ?>        
+            foreach ($citas as $key=>$cita):?>        
+            <table class="lista">
+        <thead>
+            <tr>
+                <th>Hora:</th>
+                <th>Cliente:</th>
+                <th>Telefono</th>
+                <!-- <th>Servicios:</th> -->
+                <th>Total:</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
             <?php 
                 if($idCita !==$cita->id):
                 $idCita=$cita->id;
                 $total=0;
-            ?>                            
-                <div class="agenda__cita">                                        
-                    <p class="agenda__nombre">Cliente: <span> <?php echo $cita->cliente?></span></p>
-                    <div class="agenda__datos">
-                        <p class="agenda__hora">Hora: <span> <?php echo $cita->hora?></span></p>
-                        <p class="agenda__telefono">Telefono: <span> <?php echo $cita->telefono?></span></p>                    
-                    </div>
-                    <p class="agenda__titulo">Servicios:</p>
-            <?php endif;?>    
-            <p class="agenda__servicio_nombre"><?php echo $cita->servicio . ',';?></p>            
-            <?php $total=$total+ intval($cita->precio_1); ?>            
+            ?>  
             
+                <tr>                                         
+                    <td><?php echo $cita->hora ?></td>
+                    <td><?php echo $cita->cliente ?></td>
+                    <td><?php echo $cita->telefono?></td>
+                <?php endif;?>    
+                    <!-- <td><?php echo $cita->servicio . ',';?></td>             -->
+                <?php $total=$total+ intval($cita->precio_1); ?>                        
             <?php 
             $actual=$cita->id;
             $proximo=$citas[$key+1]->id ?? 0;            
             if(esUltimo($actual,$proximo)):?>
-            <p class="agenda__total">Total: <span>$<?php echo $total?>.00</span></p>
-            </div>
+                    <td><?php echo "$".$total . ".00"?></td>            
+                    <td>    
+                        <div class="dos_columnas">
+                            <div class="div">
+                                <a href="/api/asistio<?php echo $cita->id; ?>" ><i class="fa-regular fa-square-check"></i></a>                            
+                            </div>
+                            <div class="">
+                                <form method="POST" class="w-100" action="/api/eliminar">
+                                    <input type="hidden" name="id" value="<?php echo $cita->id;?>">
+                                    <input type="hidden" name="tipo" value="usuario">
+                                    <button type="submit" class="" value="">
+                                        <i class="fa-regular fa-rectangle-xmark"></i>
+                                    </button>
+                                </form>
+                            </div>                            
+                        </div>
+                    </td>
+                </tr>
             <?php endif?>
         <?php endforeach;?>
-    </div>
+    </table>
 </div>
 </main>
 <?php 
