@@ -1,17 +1,13 @@
-<?php
-// debuguear($citas);
-?>
-<h1 class="titulo">Administración</h1>
-<main>
-<div class="contenedor">
-<div class="busqueda">
+<main class="contenedor">
+    <h1 class="titulo">Mis citas</h1>
+<!-- <div class="busqueda">
 <form action="" class="formulario">    
     <div class="campo">        
         <label for="fecha" class="campo__label">Fecha:</label>
         <input type="date" class="campo__input" id="fecha" name="fecha" value="<?php echo $fecha ?>">
     </div>
 </form>
-</div>
+</div> -->
 
 <div id="citas-admin">
     <?php if(count($citas)===0):?>
@@ -20,10 +16,9 @@
     <table class="lista">
         <thead>
             <tr>
-                <th>Hora</th>
-                <th>Cliente</th>
-                <th>Servicios</th>
-                <!-- <th>Servicios:</th> -->
+                <th>Fecha</th>
+                <th>Hora</th>                
+                <th>Servicios:</th> 
                 <th>Total</th>
                 <th>Opciones</th>
             </tr>
@@ -38,25 +33,24 @@
                 $cadena='';
             ?>              
                 <tr>                                         
-                    <td><?php echo $cita->horaInicio ?></td>
-                    <td><?php echo $cita->cliente ?></td>
-                    
-                <?php endif;?>                                    
+                    <td><?php echo $cita->fecha ?></td>
+                    <td><?php echo $cita->horaInicio ?></td>                    
+                <?php endif;?>                           
                 <?php 
-                    $cadena .= $cita->servicio . ',';
-                    $total=$total+ intval($cita->precio_1);
-                ?>                        
+                $cadena .= $cita->servicio . ',';
+                $total=$total+ intval($cita->precio_1);
+                ?>                                        
             <?php 
             $actual=$cita->id;
             $proximo=$citas[$key+1]->id ?? 0;            
-            if(esUltimo($actual,$proximo)):?>
+            if(esUltimo($actual,$proximo)):?>    
                     <td><?php echo $cadena;?></td>                    
                     <td><?php echo "$".$total . ".00"?></td>            
                     <td>    
-                        <div class="dos_columnas">
-                            <div class="form_ajustar">
+                        <!-- <div class="dos_columnas"> -->
+                            <!-- <div class="form_ajustar">
                                 <a class="padding" href="/api/asistio?id=<?php echo $cita->id;?>" ><i class="fa-regular fa-square-check"></i></a>                            
-                            </div>
+                            </div> -->
                             <div class="form_ajustar">
                                 <form method="POST" class=" posponer" action="/api/eliminar">
                                     <input type="hidden" name="id" value="<?php echo $cita->id;?>">
@@ -66,7 +60,7 @@
                                     </button>
                                 </form>
                             </div>                            
-                        </div>
+                        <!-- </div> -->
                     </td>
                 </tr>
             <?php endif?>
@@ -77,3 +71,7 @@
 <?php 
     $script="<script src='build/js/buscador.js'></script>";
 ?>
+
+
+</main>
+

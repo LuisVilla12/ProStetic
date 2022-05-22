@@ -30,5 +30,5 @@ class PaginasControler {
             'inicio'=>$inicio,
             'horarios'=>$horarios
         ]);
-    }
+    }    
 }
