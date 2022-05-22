@@ -2,6 +2,7 @@
 namespace Controllers;
 
 use MVC\Router;
+use Model\Horarios;
 
 class PaginasControler {
     public static function index(Router $router){
@@ -17,15 +18,17 @@ class PaginasControler {
         ]);
     }
     public static function inicio(Router $router){
-        $inicio=false;
+        $inicio=false;        
         $router->render('agenda/inicio',[
-            'inicio'=>$inicio
+            'inicio'=>$inicio            
         ]);
     }
     public static function cita(Router $router){
         $inicio=false;
+        $horarios=Horarios::all();
         $router->render('cita/cita',[
-            'inicio'=>$inicio
+            'inicio'=>$inicio,
+            'horarios'=>$horarios
         ]);
     }
 }

@@ -18,6 +18,7 @@ $id=$_SESSION['id'];
         <h2>Tus datos y cita</h2>
         <p class="text-center">Coloca tus datos y fecha de tu cita</p>
         <form class="formulario">
+            <div class="tres_campos">
             <div class="campo">
                 <label class="campo__label" for="nombre">Nombre:</label>
                 <input class="campo__input" type="text" name="nombre" id="nombre" placeholder="Ingresa tu nombre" 
@@ -30,7 +31,14 @@ $id=$_SESSION['id'];
             </div>
             <div class="campo">
                 <label class="campo__label" for="hora">Hora:</label>
-                <input class="campo__input" type="time" name="hora" id="hora">
+                <!-- <input class="campo__input" type="time" name="hora" id="hora"> -->
+                <!--TODO: CHECAR-->
+                <select name="id_horario" id="hora" class="campo__input">
+                    <?php foreach($horarios as $horario):?>
+                        <option value="<?php echo $horario->id?>"><?php echo $horario->horaInicio ."-". $horario->horaFin ?></option>                    
+                    <?php endforeach?>
+                </select>      
+            </div>
             </div>
             <div class="campo">
                 <input type="hidden" name="id" id="id" value="<?php echo $id?>">
