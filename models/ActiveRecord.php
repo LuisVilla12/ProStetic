@@ -39,6 +39,7 @@ class ActiveRecord {
         $array = [];
         while($registro = $resultado->fetch_assoc()) {
             $array[] = static::crearObjeto($registro);
+            // debuguear($array);
         }
 
         // liberar la memoria

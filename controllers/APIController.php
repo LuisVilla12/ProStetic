@@ -31,14 +31,23 @@ class APIController{
         ];
         echo json_encode($respuesta);       
     }
-    public static function asistio(){
+    public static function asistio(){        
+        $id=$_GET['id'] ?? '';        
+        $cita= Cita::find($id);
+        $resultado=$cita->asistir($id);
+        if($resultado){
+            header('Location:' . $_SERVER['HTTP_REFERER']);
+        }
+    }
+    public static function eliminar(){        
         if($_SERVER['REQUEST_METHOD']==='POST'){
             $id=$_POST['id'];
             $cita= Cita::find($id);
-            $resultado=$cita->asistir();
-            // debuguear($resultado);
-            // exit;
-            header('Location: '. $_SERVER['HTTP_REFERER']);            
+            $resultado=$cita->cancelar($id);
+            debuguear($resultado);
+            if($resultado){
+                header('Location:' . $_SERVER['HTTP_REFERER']);
+            }
         }
     }
 }

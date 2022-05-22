@@ -14,11 +14,7 @@
     <?php if(count($citas)===0):?>
         <p>No hay citas</p>
     <?php endif;?>
-    
-        <?php 
-            $idCita=0;
-            foreach ($citas as $key=>$cita):?>        
-            <table class="lista">
+    <table class="lista">
         <thead>
             <tr>
                 <th>Hora:</th>
@@ -29,12 +25,14 @@
                 <th>Opciones</th>
             </tr>
         </thead>
+        <?php 
+            $idCita=0;
+            foreach ($citas as $key=>$cita):?>                    
             <?php 
                 if($idCita !==$cita->id):
                 $idCita=$cita->id;
                 $total=0;
-            ?>  
-            
+            ?>              
                 <tr>                                         
                     <td><?php echo $cita->hora ?></td>
                     <td><?php echo $cita->cliente ?></td>
@@ -49,13 +47,13 @@
                     <td><?php echo "$".$total . ".00"?></td>            
                     <td>    
                         <div class="dos_columnas">
-                            <div class="div">
-                                <a href="/api/asistio<?php echo $cita->id; ?>" ><i class="fa-regular fa-square-check"></i></a>                            
+                            <div class="form_ajustar">
+                                <a class="padding" href="/api/asistio?id=<?php echo $cita->id;?>" ><i class="fa-regular fa-square-check"></i></a>                            
                             </div>
-                            <div class="">
-                                <form method="POST" class="w-100" action="/api/eliminar">
+                            <div class="form_ajustar">
+                                <form method="POST" class=" posponer" action="/api/eliminar">
                                     <input type="hidden" name="id" value="<?php echo $cita->id;?>">
-                                    <input type="hidden" name="tipo" value="usuario">
+                                    <!-- <input type="hidden" name="tipo" value="usuario"> -->
                                     <button type="submit" class="" value="">
                                         <i class="fa-regular fa-rectangle-xmark"></i>
                                     </button>

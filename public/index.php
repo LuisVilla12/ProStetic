@@ -68,8 +68,7 @@ $router->get('/cita',[PaginasControler::class,'cita']);
 $router->post('/api/citas',[APIController::class,'guardar']);
 $router->get('/api/servicios',[APIController::class,'index']);
 $router->post('/api/eliminar',[APIController::class,'eliminar']);
-$router->post('/api/asistio',[APIController::class,'asistio']);
-
+$router->get('/api/asistio',[APIController::class,'asistio']);
 $router->get('/agenda',[AdminController::class,'index']);
 $router->comprobarRutas();
 
