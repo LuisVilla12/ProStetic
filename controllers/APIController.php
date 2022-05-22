@@ -24,8 +24,9 @@ class APIController{
             ];
             $citaServicio= new CitaServicio($args);
             $resultado2=$citaServicio->guardar();
+            // debuguear($resultado2);
+            // exit;
         }
-
         $respuesta=[
         'resultado'=>$resultado   
         ];
@@ -38,7 +39,7 @@ class APIController{
         if($resultado){
             header('Location:' . $_SERVER['HTTP_REFERER']);
         }
-    }
+    }    
     public static function eliminar(){        
         if($_SERVER['REQUEST_METHOD']==='POST'){
             $id=$_POST['id'];

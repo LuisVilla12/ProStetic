@@ -37,13 +37,14 @@
                     <td><?php echo $cita->hora ?></td>
                     <td><?php echo $cita->cliente ?></td>
                     <td><?php echo $cita->telefono?></td>
-                <?php endif;?>    
-                    <!-- <td><?php echo $cita->servicio . ',';?></td>             -->
-                <?php $total=$total+ intval($cita->precio_1); ?>                        
+                <?php endif;?>                    
+                <!-- <td><?php echo  $cita->servicio . ',';?></td>                                               -->
+                    <?php $total=$total+ intval($cita->precio_1);?>                        
             <?php 
             $actual=$cita->id;
             $proximo=$citas[$key+1]->id ?? 0;            
             if(esUltimo($actual,$proximo)):?>
+                    
                     <td><?php echo "$".$total . ".00"?></td>            
                     <td>    
                         <div class="dos_columnas">
