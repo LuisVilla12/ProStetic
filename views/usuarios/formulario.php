@@ -1,5 +1,5 @@
 <fieldset>
-    <legend>Informacion general</legend>
+    <legend>Información general</legend>
     <div class="tres_campos">
     <div class="campo">
         <label class="campo__label" for="nombre">Nombre: </label>
@@ -20,12 +20,12 @@
     <legend>Datos de contacto</legend>
     <div class="dos_campos">
         <div class="campo">
-            <label class="campo__label" for="correo">Correo electronico: </label>
-            <input class="campo__input" type="text" id="correo"   name="usuario[correo]" placeholder="Ingrese la correo" value="<?php echo sanitizar($usuario->correo); ?>">
+            <label class="campo__label" for="correo">Correo electrónico: </label>
+            <input class="campo__input" type="text" id="correo"   name="usuario[correo]" placeholder="Ingrese el correo electrónico" value="<?php echo sanitizar($usuario->correo); ?>">
         </div>
         <div class="campo">
-            <label class="campo__label" for="telefono">Telefono: </label>
-            <input class="campo__input" type="text" id="telefono"   name="usuario[telefono]" placeholder="Ingrese la telefono" value="<?php echo sanitizar($usuario->telefono); ?>">
+            <label class="campo__label" for="telefono">Teléfono: </label>
+            <input class="campo__input" type="text" id="telefono"   name="usuario[telefono]" placeholder="Ingrese el teléfono" value="<?php echo sanitizar($usuario->telefono); ?>">
         </div>
     </div>
     

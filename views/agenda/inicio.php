@@ -1,4 +1,7 @@
-<h1 class="titulo">Administracion</h1>
+<?php
+// debuguear($citas);
+?>
+<h1 class="titulo">Administración</h1>
 <main>
 <div class="contenedor">
 <div class="busqueda">
@@ -17,11 +20,11 @@
     <table class="lista">
         <thead>
             <tr>
-                <th>Hora:</th>
-                <th>Cliente:</th>
-                <th>Telefono</th>
+                <th>Hora</th>
+                <th>Cliente</th>
+                <th>Teléfono</th>
                 <!-- <th>Servicios:</th> -->
-                <th>Total:</th>
+                <th>Total</th>
                 <th>Opciones</th>
             </tr>
         </thead>
@@ -34,7 +37,7 @@
                 $total=0;
             ?>              
                 <tr>                                         
-                    <td><?php echo $cita->hora ?></td>
+                    <td><?php echo $cita->horaInicio ?></td>
                     <td><?php echo $cita->cliente ?></td>
                     <td><?php echo $cita->telefono?></td>
                 <?php endif;?>                    

@@ -19,7 +19,7 @@
                 <th>ID</th>
                 <th>Nombre</th>
                 <th>Apellidos</th>
-                <th>Telefono</th>
+                <th>Teléfono</th>
                 <th>Opciones</th>
             </tr>
         </thead>

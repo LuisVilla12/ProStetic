@@ -1,5 +1,5 @@
 <fieldset>
-    <legend>Informacion general</legend>
+    <legend>Información general</legend>
     <div class="dos_campos">
     <div class="campo">
         <label class="campo__label" for="nombre">Nombre: </label>
@@ -25,12 +25,12 @@
     </div>
     <div class="tres_campos">
         <div class="campo">
-            <label class="campo__label" for="numExt">Numero Exterior: </label>
-            <input class="campo__input" type="number" id="numExt" name="proveedor[numExt]" placeholder="Ingrese la numero exterior" value="<?php echo sanitizar($proveedor->numExt); ?>">
+            <label class="campo__label" for="numExt">Número Exterior: </label>
+            <input class="campo__input" type="number" id="numExt" name="proveedor[numExt]" placeholder="Ingrese la número exterior" value="<?php echo sanitizar($proveedor->numExt); ?>">
         </div>
         <div class="campo">
-            <label class="campo__label" for="numInt">Numero Interior: </label>
-            <input class="campo__input" type="number" id="numInt" name="proveedor[numInt]" placeholder="Ingrese la numero Interior" value="<?php echo sanitizar($proveedor->numInt); ?>">
+            <label class="campo__label" for="numInt">Número Interior: </label>
+            <input class="campo__input" type="number" id="numInt" name="proveedor[numInt]" placeholder="Ingrese la número Interior" value="<?php echo sanitizar($proveedor->numInt); ?>">
         </div>
         <div class="campo">
             <label class="campo__label" for="CP">CP: </label>
@@ -52,16 +52,16 @@
     <legend>Información de contacto</legend>
     <div class="dos_campos">
         <div class="campo">
-            <label class="campo__label" for="telefono">Telefono: </label>
-            <input class="campo__input" type="number" id="telefono" placeholder="Ingrese el n° telefonico" min="1" name="proveedor[telefono]" value="<?php echo sanitizar($proveedor->telefono); ?>">
+            <label class="campo__label" for="telefono">Teléfono: </label>
+            <input class="campo__input" type="number" id="telefono" placeholder="Ingrese el n° teléfonico" min="1" name="proveedor[telefono]" value="<?php echo sanitizar($proveedor->telefono); ?>">
         </div>
         <div class="campo">
-            <label class="campo__label" for="correo">Correo electronico: </label>
-            <input class="campo__input" type="email" id="correo" placeholder="Ingrese el correo electronico" name="proveedor[correo]" value="<?php echo sanitizar($proveedor->correo); ?>">
+            <label class="campo__label" for="correo">Correo electrónico: </label>
+            <input class="campo__input" type="email" id="correo" placeholder="Ingrese el correo electrónico" name="proveedor[correo]" value="<?php echo sanitizar($proveedor->correo); ?>">
         </div>
     </div>
     <div class="campo">
-        <label>Metodo de pago</label>
+        <label>Método de pago</label>
         <select name="proveedor[MetodoDePago]" class="campo__input" id="vendedor">
             <option value="0" selected disabled>--Sin seleccionar--</option>
             <option value="EFECTIVO" <?php echo $proveedor->MetodoDePago === 'EFECTIVO' ? 'selected' : ''; ?>>Efectivo</option>

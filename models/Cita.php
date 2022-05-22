@@ -2,12 +2,12 @@
 namespace Model;
 class Cita extends ActiveRecord{
     protected static $tabla = 'citas';
-    protected static $columnasDB = ['id','idUsuario','fecha','hora','asistio','cancelar'];
+    protected static $columnasDB = ['id','idUsuario','fecha','id_horario','asistio','cancelar'];
     public $id;
     public $idUsuario;
     public $fecha;
-    public $hora;
     // public $hora;
+    public $id_horario;
     public $asistio;
     public $cancelar;
 
@@ -15,7 +15,7 @@ class Cita extends ActiveRecord{
         $this->id=$args['id']??null;
         $this->idUsuario=$args['idUsuario']??'';
         $this->fecha=$args['fecha']??'';
-        $this->hora=$args['hora']??'';
+        $this->id_horario=$args['id_horario']??1;
         $this->asistio=$args['asistio']??0;
         $this->cancelar=$args['cancelar']??0;
     }

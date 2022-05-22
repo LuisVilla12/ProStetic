@@ -3,11 +3,12 @@ let pasoInicial = 1;
 let pasoFinal = 3;
 let numServicio = 1;
 let total = 0;
+let horario = '';
 const cita = {
     id: '',
     nombre: '',
     fecha: '',
-    hora: '',
+    id_horario: '',
     servicios: []
 }
 document.addEventListener('DOMContentLoaded', function() {
@@ -195,8 +196,9 @@ function seleccionarFecha() {
 function seleccionarHora() {
     const inputHora = document.querySelector('#hora');
     inputHora.addEventListener('input', (e) => {
-        cita.hora = e.target.value;
-        console.log(cita);
+        cita.id_horario = e.target.value;
+        // horario = e.target.text;
+        // console.log(cita);
     });
 }
 
@@ -234,7 +236,7 @@ function mostrarResumen() {
         mostrarAlerta('Hacen falta datos', 'error', '.contenido_resumen', false);
         return
     }
-    const { nombre, fecha, hora, servicios } = cita;
+    const { nombre, fecha, id_horario, servicios } = cita;
     const nombreCliente = document.createElement('P');
     nombreCliente.innerHTML = `<span>Nombre: </span> ${nombre}`;
     nombreCliente.classList.add('detalles__cliente');
@@ -256,7 +258,7 @@ function mostrarResumen() {
     fechaCita.innerHTML = `<span>Fecha: </span> ${fechaFormateada}`;
 
     const horaCita = document.createElement('P');
-    horaCita.innerHTML = `<span>Hora: </span> ${hora}`;
+    horaCita.innerHTML = `<span>Hora: </span> ${id_horario}`;
 
     contenedorFechaHora.appendChild(fechaCita);
     contenedorFechaHora.appendChild(horaCita);
@@ -303,13 +305,13 @@ function mostrarResumen() {
 }
 async function reservarCita() {
 
-    const { id, fecha, hora, servicios } = cita;
+    const { id, fecha, id_horario, servicios } = cita;
     const idServicio = servicios.map(servicio => servicio.id);
 
     const datos = new FormData();
     datos.append('idUsuario', id);
     datos.append('fecha', fecha);
-    datos.append('hora', hora);
+    datos.append('id_horario', id_horario);
     datos.append('servicios', idServicio);
     try {
         const url = "http://localhost:3000/api/citas";
@@ -334,7 +336,6 @@ async function reservarCita() {
                 }, 1000);
             })
         };
-
     } catch (error) {
         Swal.fire({
             icon: 'error',

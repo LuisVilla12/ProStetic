@@ -1,5 +1,5 @@
 <fieldset>
-    <legend>Informacion general</legend>
+    <legend>Información general</legend>
     <div class="tres_campos">
     <div class="campo">
         <label class="campo__label" for="nombre">Nombre: </label>
@@ -42,7 +42,7 @@
     </div>
     
     <div class="campo">
-        <label class="campo__label" for="descripcion">Descripcion: </label>
+        <label class="campo__label" for="descripcion">Descripción: </label>
         <textarea name="producto[descripcion]" id="descripcion"><?php echo $producto->descripcion; ?></textarea>
     </div>
     

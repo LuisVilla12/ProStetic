@@ -46,7 +46,7 @@ $tipo=$_SESSION['tipo'] ?? 1;
                 <?php if ($tipo=='1'):?>
                     <a href="#" class="nav__a"><i class="fa-solid fa-users" ></i>Nosotros</a>
                     <a href="#" class="nav__a"><i class="fa-solid fa-scissors"></i>Servicios</a>
-                    <a href="#" class="nav__a"><i class="fa-solid fa-images" id="#galeria"></i>Galeria</a>
+                    <a href="#" class="nav__a"><i class="fa-solid fa-images" id="#galeria"></i>Galería</a>
                     <a href="#" class="nav__a"><i class="fa-solid fa-calendar-days"></i>Citas</a>                    
                     <?php if(!$autenticar):?>
                         <a class="nav__a" href="/login"><i class="fa-solid fa-user"></i>Iniciar sesión</a>

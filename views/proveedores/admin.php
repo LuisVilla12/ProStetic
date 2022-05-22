@@ -18,7 +18,7 @@
             <tr>
                 <th>ID</th>
                 <th>Nombre</th>
-                <th>Telefono</th>
+                <th>Teléfono</th>
                 <th>Correo</th>
                 <th>RFC</th>
                 <th>Opciones</th>

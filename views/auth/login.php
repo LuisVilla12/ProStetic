@@ -3,7 +3,7 @@
     <form action="/login" class="formulario w-50" method="POST">
         <fieldset>
             <div class="campo">
-                <label for="usuario" class="campo__label">Correo electronico:</label>
+                <label for="usuario" class="campo__label">Correo electrónico:</label>
                 <input type="email" id="usuario" class="campo__input" name="correo" value="<?php echo sanitizar($usuario->correo) ?>" required>
             </div>
             <div class="campo">

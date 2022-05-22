@@ -44,7 +44,7 @@ class Proveedor extends ActiveRecord{
             self::$alertas['error'][] = 'Debes ingresar un nombre al proveedor';
         }
         if (!$this->RFC|| strlen($this->RFC)<5) {
-            self::$alertas['error'][] = 'Debes ingresar un RFC valido';
+            self::$alertas['error'][] = 'Debes ingresar un RFC válido';
         }
         if (!$this->calle|| strlen($this->calle)<3) {
             self::$alertas['error'][] = 'Debes ingresar una calle';
@@ -53,10 +53,10 @@ class Proveedor extends ActiveRecord{
             self::$alertas['error'][] = 'Debes ingresar una colonia';
         }
         if (!$this->numExt) {
-            self::$alertas['error'][] = 'Debe ingresar un numero exterior';
+            self::$alertas['error'][] = 'Debe ingresar un número exterior';
         }
         if (!$this->CP || strlen($this->CP)<4) {
-            self::$alertas['error'][] = 'Debe ingresar un codigo postal';
+            self::$alertas['error'][] = 'Debe ingresar un código postal';
         }
         if (!$this->ciudad|| strlen($this->ciudad)<4) {
             self::$alertas['error'][] = 'Debe ingresar una ciudad';
@@ -65,13 +65,13 @@ class Proveedor extends ActiveRecord{
             self::$alertas['error'][] = 'Debe ingresar un estado';
         }
         if (!$this->telefono|| strlen($this->telefono)<9||strlen($this->telefono)>11) {
-            self::$alertas['error'][] = 'Debe ingresar un n° de telefono valido';
+            self::$alertas['error'][] = 'Debe ingresar un n° de teléfono valido';
         }
         if (!$this->correo|| strlen($this->correo)<6) {
-            self::$alertas['error'][] = 'Debe ingresar un correo electronico';
+            self::$alertas['error'][] = 'Debe ingresar un correo electrónico';
         }                                
         if (!$this->MetodoDePago) {
-            self::$alertas['error'][] = 'Debe seleccionar un metodo de pago';
+            self::$alertas['error'][] = 'Debe seleccionar un método de pago';
         }                                
         return self::$alertas;
     }

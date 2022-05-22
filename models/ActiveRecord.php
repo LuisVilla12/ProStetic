@@ -34,7 +34,6 @@ class ActiveRecord {
     public static function consultarSQL($query) {
         // Consultar la base de datos
         $resultado = self::$db->query($query);
-
         // Iterar los resultados
         $array = [];
         while($registro = $resultado->fetch_assoc()) {
@@ -187,7 +186,7 @@ class ActiveRecord {
     }
     // Consulta general SQL
     public static function SQL($consulta) {
-        $resultado = self::consultarSQL($consulta);
+        $resultado = self::consultarSQL($consulta);        
         return $resultado ;
     }
 

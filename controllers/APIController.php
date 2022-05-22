@@ -10,10 +10,9 @@ class APIController{
         $servicios = Servicio::all();        
         echo json_encode($servicios);
     }
-    public static function guardar(){        
+    public static function guardar(){                
         $cita= new Cita($_POST);        
-        $resultado = $cita->guardar();
-        
+        $resultado = $cita->guardar();        
         $idServicios=explode(",",$_POST['servicios']);
 
          // itera sonbre el arreglo de servicios
@@ -28,7 +27,7 @@ class APIController{
             // exit;
         }
         $respuesta=[
-        'resultado'=>$resultado   
+            'resultado'=>$resultado   
         ];
         echo json_encode($respuesta);       
     }

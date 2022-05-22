@@ -45,16 +45,16 @@ class Usuario extends ActiveRecord{
             self:: $alertas['error'][] = 'Debe ingresar su nombre';
         }        
         if (!$this->apellidoPat|| strlen($this->apellidoPat)<3) {
-            self:: $alertas['error'][] = 'Debe ingresar su apellido Paterno';
+            self:: $alertas['error'][] = 'Debe ingresar su apellido paterno';
         }
         if (!$this->apellidoMat|| strlen($this->apellidoMat)<3) {
-            self:: $alertas['error'][] = 'Debe ingresar su apellido Materno';
+            self:: $alertas['error'][] = 'Debe ingresar su apellido materno';
         }
         if (!$this->correo|| strlen($this->correo)<7) {
-            self:: $alertas['error'][] = 'Debe ingresar un correo electronico';
+            self:: $alertas['error'][] = 'Debe ingresar un correo electrónico';
         }
         if (!$this->telefono|| strlen($this->telefono)<4) {
-            self:: $alertas['error'][] = 'Debe ingresar un n° de telefono';
+            self:: $alertas['error'][] = 'Debe ingresar un n° de teléfono';
         }        
         return self::$alertas;
     }
