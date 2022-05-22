@@ -9,7 +9,7 @@ use Controllers\EmpleadoControler;
 use Controllers\ProductoControler;
 use Controllers\LoginControler;
 use Controllers\APIController;
-
+use Controllers\ServiciosController;
 
 $router = new Router();
 $router->get('/proveedores/admin',[ProveedorControler::class,'index']);
@@ -41,6 +41,13 @@ $router->post('/inventario/crear',[ProductoControler::class,'crear']);
 $router->get('/inventario/actualizar',[ProductoControler::class,'actualizar']);
 $router->post('/inventario/actualizar',[ProductoControler::class,'actualizar']);
 $router->post('/inventario/eliminar',[ProductoControler::class,'eliminar']);
+// Servicios
+$router->get('/servicios/admin',[ServiciosController::class,'index']);
+$router->get('/servicios/crear',[ServiciosController::class,'crear']);
+$router->post('/servicios/crear',[ServiciosController::class,'crear']);
+$router->get('/servicios/actualizar',[ServiciosController::class,'actualizar']);
+$router->post('/servicios/actualizar',[ServiciosController::class,'actualizar']);
+$router->post('/servicios/eliminar',[ServiciosController::class,'eliminar']);
 
 // Publica
 $router->get('/',[PaginasControler::class,'index']);

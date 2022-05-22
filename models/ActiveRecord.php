@@ -145,7 +145,7 @@ class ActiveRecord {
         // Ver la respuesta del fetch
         // return json_encode(['query'=>$query]);
         // debuguear($_POST);
-        // debuguear($query);
+        debuguear($query);
         
         // Resultado de la consulta
         $resultado = self::$db->query($query);        

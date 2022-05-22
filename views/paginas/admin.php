@@ -22,10 +22,10 @@
             <p>Inventario</p>
         </div>
     </a>
-    <a href="/ganancias/admin">
+    <a href="/servicios/admin">
         <div class="submenu">
             <i class="fa-solid fa-coins"></i>
-            <p>Ganancias</p>
+            <p>Servicios</p>
         </div>
     </a>
     <a href="/ventas/admin">
