@@ -79,6 +79,10 @@ $router->post('/api/eliminar',[APIController::class,'eliminar']);
 $router->get('/api/asistio',[APIController::class,'asistio']);
 $router->get('/agenda',[AdminController::class,'index']);
 $router->get('/mis_citas',[AdminController::class,'miscitas']);
+// Ventas
+$router->get('/mis_citas',[AdminController::class,'miscitas']);
+$router->get('/ventas/admin',[AdminController::class,'ventas']);
+// $router->get('/ventas/',[AdminController::class,'ventas']);
 $router->comprobarRutas();
 
 

@@ -6,7 +6,7 @@ $id=$_SESSION['id'];
 <main class="contenedor">
     <nav class="tabs">
         <button type="button" data-paso="1" class="actual">Servicios</button>
-        <button type="button" data-paso="2">Informacion cita</button>
+        <button type="button" data-paso="2">Información cita</button>
         <button type="button" data-paso="3">Resumen</button>
     </nav>
     <div id="paso-1" class="seccion">

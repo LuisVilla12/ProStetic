@@ -55,7 +55,7 @@ class UsuariosControler{
         $id=validarORediredireccionar('/usuarios/admin');
         $usuario=Usuario::find($id);
         $contraseña=$usuario->contraseña;
-        debuguear($contraseña);
+        // debuguear($contraseña);
         $alertas = Usuario::getAlertas();
         $inicio=false;
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {

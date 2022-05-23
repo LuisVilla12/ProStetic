@@ -15,7 +15,7 @@ class Servicio extends ActiveRecord{
         $this->id=$args['id']??null;
         $this->nombre=$args['nombre']??'';
         $this->precio_1=$args['precio_1']??'';
-        $this->precio_2=$args['precio_2']?? 0;
+        $this->precio_2=$args['precio_2']?? '';
         $this->duracion=$args['duracion']??'';
     }
     public function validar(){

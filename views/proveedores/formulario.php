@@ -16,21 +16,21 @@
     <div class="dos_campos">
         <div class="campo">
             <label class="campo__label" for="calle">calle: </label>
-            <input class="campo__input" type="text" id="calle" name="proveedor[calle]" placeholder="Ingrese la calle" value="<?php echo sanitizar($proveedor->calle); ?>">
+            <input class="campo__input" type="text" id="calle" name="proveedor[calle]" placeholder="Ingrese una calle" value="<?php echo sanitizar($proveedor->calle); ?>">
         </div>
         <div class="campo">
             <label class="campo__label" for="colonia">colonia: </label>
-            <input class="campo__input" type="text" id="colonia" name="proveedor[colonia]" placeholder="Ingrese la colonia" value="<?php echo sanitizar($proveedor->colonia); ?>">
+            <input class="campo__input" type="text" id="colonia" name="proveedor[colonia]" placeholder="Ingrese una colonia" value="<?php echo sanitizar($proveedor->colonia); ?>">
         </div>
     </div>
     <div class="tres_campos">
         <div class="campo">
             <label class="campo__label" for="numExt">Número Exterior: </label>
-            <input class="campo__input" type="number" id="numExt" name="proveedor[numExt]" placeholder="Ingrese la número exterior" value="<?php echo sanitizar($proveedor->numExt); ?>">
+            <input class="campo__input" type="number" id="numExt" name="proveedor[numExt]" placeholder="Ingrese el número exterior" value="<?php echo sanitizar($proveedor->numExt); ?>">
         </div>
         <div class="campo">
             <label class="campo__label" for="numInt">Número Interior: </label>
-            <input class="campo__input" type="number" id="numInt" name="proveedor[numInt]" placeholder="Ingrese la número Interior" value="<?php echo sanitizar($proveedor->numInt); ?>">
+            <input class="campo__input" type="number" id="numInt" name="proveedor[numInt]" placeholder="Ingrese el número Interior" value="<?php echo sanitizar($proveedor->numInt); ?>">
         </div>
         <div class="campo">
             <label class="campo__label" for="CP">CP: </label>

@@ -258,7 +258,7 @@ function mostrarResumen() {
     fechaCita.innerHTML = `<span>Fecha: </span> ${fechaFormateada}`;
 
     const horaCita = document.createElement('P');
-    horaCita.innerHTML = `<span>Hora: </span> ${id_horario}`;
+    // horaCita.innerHTML = `<span>Hora: </span> ${id_horario}`;
 
     contenedorFechaHora.appendChild(fechaCita);
     contenedorFechaHora.appendChild(horaCita);
@@ -296,12 +296,17 @@ function mostrarResumen() {
     totaltxt.classList.add('detalles__total');
     contenidoResumen.appendChild(totaltxt);
 
+    const contenedorRegistrarCita = document.createElement('DIV');
+    contenedorRegistrarCita.classList.add('centrar');
+
     const btnRegistrarCita = document.createElement('BUTTON');
     btnRegistrarCita.classList.add('btn');
+
     btnRegistrarCita.textContent = 'Reservar cita';
     btnRegistrarCita.onclick = reservarCita;
 
-    contenidoResumen.appendChild(btnRegistrarCita);
+    contenedorRegistrarCita.appendChild(btnRegistrarCita);
+    contenidoResumen.appendChild(contenedorRegistrarCita);
 }
 async function reservarCita() {
 

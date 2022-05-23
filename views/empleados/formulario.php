@@ -71,8 +71,11 @@
         </div>
         <div class="campo">
             <label class="campo__label" for="cargo">Cargo: </label>
-            <select name="" class="campo__input" id="proveedor">               
-        </select>
+            <select name="" class="campo__input" id="proveedor">
+                <option value="">Estilista</option>               
+                <option value="">Recepcionista</option>               
+                <option value="">Gerente</option>               
+            </select>
         </div>
     </div>
 </fieldset>    
