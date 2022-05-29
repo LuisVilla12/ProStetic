@@ -16,7 +16,7 @@
             $total=0;
             $cadena='';
     ?>
-    <option value="<?php echo $cita->id?>"><?php echo $cita->cliente ?></option>
+    <option <?php echo $id === $cita->id ? 'selected' : '';?> value="<?php echo $cita->id?>"><?php echo $cita->cliente ?></option>
     <?php endif;?>
     <?php endforeach;?>
     <?php endif;?>
@@ -33,8 +33,8 @@
                     $total=0;
                     $cadena='';
                 ?>                                                      
-                    <p><?php echo $cita->horaInicio ?></p>
-                    <p><?php echo $cita->cliente ?></p>    
+                    <p>Cliente: <?php echo $cita->cliente ?></p>    
+                    <p>Hora: <?php echo $cita->horaInicio ?></p>
                 <?php endif;?>                                    
                 <?php 
                     $cadena .= $cita->servicio . ',';
@@ -44,8 +44,15 @@
                     $actual=$cita->id;
                     $proximo=$citas[$key+1]->id ?? 0;            
                     if(esUltimo($actual,$proximo)):?>
-                        <p><?php echo $cadena;?></p>                    
-                        <p><?php echo "$".$total . ".00"?></p>                
+                        <p>Servicios: <?php echo $cadena;?></p>                    
+                        <p>Total:<?php echo "$".$total . ".00"?></p>
+                        <div class="dos_columnas">
+                            <div class="form_ajustar">
+                            <a class="padding" href="/api/pagar?id=<?php echo $cita->id;?>" ><i class="fa-regular fa-square-check"></i> Pagar</a>                            
+                        </div>
+                     </div>                            
+                </div>
+                
                     <?php endif?>
             <?php endif?>
         <?php endforeach;?>

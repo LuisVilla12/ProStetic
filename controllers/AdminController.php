@@ -63,7 +63,7 @@ class AdminController{
         $consulta .= " LEFT OUTER JOIN citas_servicios  ON citas_servicios.idCita=citas.id";
         $consulta .= " LEFT OUTER JOIN horarios ON horarios.id=citas.id_horario ";        
         $consulta .= " LEFT OUTER JOIN servicios  ON servicios.id=citas_servicios.idServicio ";        
-        $consulta .= " WHERE fecha = '${fecha}' and citas.asistio=0 and citas.cancelar=0";
+        $consulta .= " WHERE fecha = '${fecha}' and citas.asistio=0 and citas.cancelar=0 and pagado=0";
         
         $resultadoCitas=AdminCita::SQL($consulta);
         $inicio=false;

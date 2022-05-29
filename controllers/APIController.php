@@ -38,6 +38,14 @@ class APIController{
         if($resultado){
             header('Location:' . $_SERVER['HTTP_REFERER']);
         }
+    }
+    public static function pagar(){        
+        $id=$_GET['id'] ?? '';        
+        $cita= Cita::find($id);
+        $resultado=$cita->pagar($id);
+        if($resultado){
+            header('Location:' . $_SERVER['HTTP_REFERER']);
+        }
     }    
     public static function eliminar(){        
         if($_SERVER['REQUEST_METHOD']==='POST'){

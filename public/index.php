@@ -77,6 +77,7 @@ $router->post('/api/citas',[APIController::class,'guardar']);
 $router->get('/api/servicios',[APIController::class,'index']);
 $router->post('/api/eliminar',[APIController::class,'eliminar']);
 $router->get('/api/asistio',[APIController::class,'asistio']);
+$router->get('/api/pagar',[APIController::class,'pagar']);
 $router->get('/agenda',[AdminController::class,'index']);
 $router->get('/mis_citas',[AdminController::class,'miscitas']);
 // Ventas
