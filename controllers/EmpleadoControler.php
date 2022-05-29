@@ -86,22 +86,9 @@ class EmpleadoControler{
             $usuario->sincronizar($args);
             $domicilio->sincronizar($args);            
             // debuguear($domicilio);
-            // debuguear($contraseña);            
-            debuguear($usuario);
-            // si el usuario no ingresa una contraseña nueva se le asigna nuevamente la anterior
-            if($contraseña === ""){
-                $contraseña=$usuario->contraseña;
-                // debuguear($usuario->contraseña);
-                $usuario->contraseña=$contraseña; 
-                // debuguear($usuario->contraseña);               
-                echo 'VIEJA';                
-            }else{
-                // en caso contrario hashea la nueva
-                $usuario->contraseña=password_hash($usuario->contraseña,PASSWORD_BCRYPT);
-                echo 'NUEVA';
-            }                   
-            debuguear($usuario);    
-            exit;        
+            if($contraseña !== ""){
+                $usuario->contraseña=password_hash($contraseña,PASSWORD_BCRYPT);                               
+            }
             // Crea arreglo de errores
             $alertas = $usuario->validarErrores();
             // valida

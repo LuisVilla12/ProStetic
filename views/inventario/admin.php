@@ -1,4 +1,6 @@
-
+<?php 
+// debuguear($productos);
+?>
 <main class="contenedor">
     <h1 class="admin__titulo">Administrador de productos</h1>
     <?php if($registro):?>
@@ -30,7 +32,7 @@
                 <tr>
                     <td><?php echo $producto->id ?></td>
                     <td><?php echo $producto->nombre ?></td>
-                    <td><?php echo $producto->idProveedor?></td>
+                    <td><?php echo $producto->nombreProveedor?></td>
                     <td><?php echo $producto->cantidad ?></td>
                     <td><?php echo $producto->precioVenta ?></td>
                     <td>

@@ -46,13 +46,7 @@ class Producto extends ActiveRecord{
             self::$alertas['error'][] = 'Debe ingresar una cantidad';
         }
         return self::$alertas;
-    }
-    public static function allProductos() {
-        // $query = "SELECT * FROM " . static::$tabla . " WHERE estadoProveedor = ". 1;
-        // $query="SELECT p.id,p.nombre, v.nombre,p.cantidad,p.precioVenta from producto as p INNER join proveedor as v on p.idProveedor=v.id";
-        // $resultado = self::consultarSQL($query);
-        // return $resultado;
-    }
+    }    
     public function eliminarProducto() {
         // UPDATE agenda SET telefono='662142223' , email='albesanch@mimail.com' WHERE nombre='Alberto Sanchez'
         $total = $this->cantidad-1;

@@ -4,11 +4,12 @@ namespace Controllers;
 
 use MVC\Router;
 use Model\Producto;
+use Model\Inventario;
 use Model\Proveedor;
 
 class ProductoControler{
     public static function index(Router $router)    {
-        $productos = Producto::all();
+        $productos = Inventario::allProductos();
         $registro = $_GET['registro'] ?? null;
         $inicio=false;
         // Manda datos a la vista
