@@ -3,8 +3,9 @@
 ?>
 <main class="contenedor">   
     <h1 class="admin__titulo">Nueva venta</h1>
-    <p>Seleccionar cita:</p>
-    <select name="id_citas" id="id_citas" class="campo__input">
+    <div class="flex">
+    <p class="hijo">Seleccionar cita:</p>
+    <select name="id_citas" id="id_citas" class="campo__input hijo_2">
     <?php if(!$citas): ?>
         <option>No hay citas</option> 
     <?php else:?>               
@@ -21,7 +22,7 @@
     <?php endforeach;?>
     <?php endif;?>
     </select>
-    
+    </div>
     <?php if($id==''):?>
         <p>Por favor seleccione una cita</p>
     <?php else:?>

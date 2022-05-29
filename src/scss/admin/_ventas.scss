@@ -1,0 +1,12 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+.flex{
+    margin-top: 2rem;
+    display: flex;
+}
+.hijo{
+    flex: 1;
+}
+.hijo_2{
+    flex: 4;
+}

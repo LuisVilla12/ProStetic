@@ -25,7 +25,7 @@
         </div>
         <div class="campo">
             <label class="campo__label" for="telefono">Teléfono: </label>
-            <input class="campo__input" type="text" id="telefono"   name="usuario[telefono]" placeholder="Ingrese el teléfono" value="<?php echo sanitizar($usuario->telefono); ?>">
+            <input class="campo__input" type="number" id="telefono"   name="usuario[telefono]" placeholder="Ingrese el teléfono" value="<?php echo sanitizar($usuario->telefono); ?>">
         </div>
     </div>
     

@@ -73,10 +73,5 @@ class AdminController{
             'citas'=>$resultadoCitas,
             'id'=>$id
         ]);
-    }
-    public static function encontrar(Router $router){
-        $id=$_GET['id']??'';
-        echo "HLA";
-        // $proveedor=Proveedor::find($id);
     }        
 }
