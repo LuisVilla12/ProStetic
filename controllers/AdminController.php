@@ -54,8 +54,9 @@ class AdminController{
     } 
 
     public static function ventas(Router $router){
-        $fecha=date('Y-m-d');        
-        // Consultar base de datos
+        $fecha=date('Y-m-d');
+        $id=$_GET['id']??'';        
+        // Consultar base de     datos
         $consulta = "SELECT citas.id, horarios.horaInicio as horaInicio, CONCAT( usuario.nombre, ' ', usuario.apellidoPat) as cliente, ";
         $consulta .= "usuario.correo, usuario.telefono, servicios.nombre as servicio, servicios.precio_1 FROM citas";
         $consulta .= " LEFT OUTER JOIN usuario ON citas.idUsuario=usuario.id";
@@ -66,9 +67,16 @@ class AdminController{
         
         $resultadoCitas=AdminCita::SQL($consulta);
         $inicio=false;
+
         $router->render('/ventas/admin',[            
             'inicio'=>$inicio,            
-            'citas'=>$resultadoCitas
+            'citas'=>$resultadoCitas,
+            'id'=>$id
         ]);
     }
+    public static function encontrar(Router $router){
+        $id=$_GET['id']??'';
+        echo "HLA";
+        // $proveedor=Proveedor::find($id);
+    }        
 }

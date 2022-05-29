@@ -3,12 +3,15 @@ namespace Controllers;
 
 use MVC\Router;
 use Model\Horarios;
+use Model\Servicio;
 
 class PaginasControler {
     public static function index(Router $router){
         $inicio=true;
+        $servicios=Servicio::allLimit();
         $router->render('paginas/index',[
-            'inicio'=>$inicio
+            'inicio'=>$inicio,
+            'servicios'=>$servicios
         ]);
     }
     public static function menu(Router $router){

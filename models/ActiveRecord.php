@@ -109,6 +109,11 @@ class ActiveRecord {
         $resultado = self::consultarSQL($query);
         return $resultado;
     }
+    public static function allLimit() {
+        $query = "SELECT * FROM " . static::$tabla.' LIMIT 6';
+        $resultado = self::consultarSQL($query);
+        return $resultado;
+    }
 
     // Busca un registro por su id
     public static function find($id) {

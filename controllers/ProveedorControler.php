@@ -48,6 +48,7 @@ class ProveedorControler{
     public static function actualizar(Router $router){
         $id=validarORediredireccionar('/');
         $proveedor=Proveedor::find($id);
+        
         $alertas = Proveedor::getAlertas();
         $inicio=false;
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
