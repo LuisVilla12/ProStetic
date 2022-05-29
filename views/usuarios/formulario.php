@@ -18,7 +18,7 @@
 </fieldset>
 <fieldset>
     <legend>Datos de contacto</legend>
-    <div class="dos_campos">
+    <div class="tres_campos">
         <div class="campo">
             <label class="campo__label" for="correo">Correo electrónico: </label>
             <input class="campo__input" type="text" id="correo"   name="usuario[correo]" placeholder="Ingrese el correo electrónico" value="<?php echo sanitizar($usuario->correo); ?>">
@@ -26,6 +26,10 @@
         <div class="campo">
             <label class="campo__label" for="telefono">Teléfono: </label>
             <input class="campo__input" type="number" id="telefono"   name="usuario[telefono]" placeholder="Ingrese el teléfono" value="<?php echo sanitizar($usuario->telefono); ?>">
+        </div>
+        <div class="campo">
+            <label class="campo__label" for="fechaN">Fecha de nacimiento: </label>
+            <input class="campo__input" type="date" id="fechaN" name="usuario[fechaN]" value="<?php echo sanitizar($usuario->fechaN); ?>">
         </div>
     </div>
     

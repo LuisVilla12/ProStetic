@@ -4,7 +4,7 @@ class Usuario extends ActiveRecord{
     // Define la tabla
     protected static $tabla='usuario';
     // Define los atributos en un arreglo
-    protected static $columnasDB=['id','idTipoUsuario','nombre','apellidoPat','apellidoMat','telefono','correo','contraseña','token','confirmado'];
+    protected static $columnasDB=['id','idTipoUsuario','nombre','apellidoPat','apellidoMat','telefono','correo','contraseña','token','confirmado','cargo','fechaN','estatus'];
 
     public $id;
     public $idTipoUsuario;
@@ -16,8 +16,10 @@ class Usuario extends ActiveRecord{
     public $contraseña;    
     public $token;
     public $confirmado;
-    // public $estatus;
-    
+    public $cargo;
+    public $fechaN;
+    public $estatus;
+
     public function __construct($args = []){
         $this->id=$args['id']?? null;
         $this->idTipoUsuario=$args['idTipoUsuario']?? 1;
@@ -29,12 +31,9 @@ class Usuario extends ActiveRecord{
         $this->contraseña=$args['contraseña']?? '';        
         $this->token=$args['token']?? '';        
         $this->confirmado=$args['confirmado']?? 0; 
-        // $this->estatus=$args['estatus']?? 1; 
-        // Direccion       
-        // $this->calle=$args['calle']?? '';        
-        // $this->colonia=$args['colonia']?? '';        
-        // $this->CP=$args['CP']?? '';        
-        // $this->cargo=$args['cargo']?? '';        
+        $this->cargo=$args['cargo']?? 'Ninguno'; 
+        $this->fechaN=$args['fechaN']?? '';         
+        $this->estatus=$args['estatus']?? 1;         
     }
 
     public function validarErrores(){        
@@ -54,6 +53,9 @@ class Usuario extends ActiveRecord{
             self:: $alertas['error'][] = 'Debe ingresar un correo electrónico';
         }
         if (!$this->telefono|| strlen($this->telefono)<4) {
+            self:: $alertas['error'][] = 'Debe ingresar un n° de teléfono';
+        }
+        if (!$this->fechaN) {
             self:: $alertas['error'][] = 'Debe ingresar un n° de teléfono';
         }        
         return self::$alertas;
@@ -118,9 +120,9 @@ class Usuario extends ActiveRecord{
         $resultado=self::consultarSQL($query);
         return $resultado;
     }
-    public static function eliminarEmpleados(){
-        // Query
-        $query = "SELECT * FROM " .  static::$tabla . " WHERE idTipoUsuario = 1";
+    public static function eliminarEmpleados(){        
+        // $query = "SELECT * FROM " .  static::$tabla . " WHERE idTipoUsuario = 1";
+        $query = "UPDATE " .  static::$tabla . " SET estatus=0";
         $resultado=self::consultarSQL($query);
         return $resultado;
     }
