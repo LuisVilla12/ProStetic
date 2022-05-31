@@ -5,17 +5,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 function eliminar() {
-    const btnEliminar = document.querySelector('#eliminar');
-    const inputValue = document.querySelector('#idEliminar');
-    // console.log(btnEliminar);
-    // console.log(inputValue);
+    const btnsEliminar = document.querySelectorAll('#eliminar');
+    const inputsValue = document.querySelectorAll('#idEliminar');
     // console.log(id);
-    btnEliminar.addEventListener('click', (e) => {
-        const id = inputValue.value;
-        e.preventDefault();
-        // confirmar_dos(id);
-        confirmar(id);
+    // inputsValue.forEach(inputValue => {
+    //     console.log(inputValue);
+    // });
+    btnsEliminar.forEach(btnEliminar => {
+        btnEliminar.addEventListener('click', (e) => {
+            e.preventDefault();
+        });
     });
+
+    // btnEliminar.addEventListener('click', (e) => {
+    //     const id = inputsValue[contBtns].value;
+    //     e.preventDefault();
+    //     confirmar(id);
+    // });
+
 
 }
 
