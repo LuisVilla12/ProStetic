@@ -28,6 +28,7 @@ class PaginasControler {
     }
     public static function cita(Router $router){
         $inicio=false;
+        inicioSesion();
         $horarios=Horarios::all();
         $router->render('cita/cita',[
             'inicio'=>$inicio,

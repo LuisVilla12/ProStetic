@@ -75,3 +75,9 @@ function estaAutenticado(){
         header('Location: /');
     }
 }
+// Autenticar
+function inicioSesion(){
+    if(!isset($_SESSION['id'])){
+        header('Location: /login');
+    }
+}
