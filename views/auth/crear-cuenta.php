@@ -1,6 +1,8 @@
 <h1 class="titulo">Crear cuenta</h1>
 <p class="descripcion">Ingresa tus datos</p>
-
+    <?php
+        include_once __DIR__ . '/../templates/alertas.php';
+    ?>
 <main class="contenedor">    
     <form action="" class="formulario" method="POST">
     <fieldset>
@@ -22,7 +24,7 @@
     </fieldset>
     <fieldset>
     <legend>Datos de contacto</legend>
-    <div class="dos_campos">
+    <div class="tres_campos">
         <div class="campo">
             <label class="campo__label" for="correo">Correo electronico: </label>
             <input class="campo__input" type="text" id="correo" required name="usuario[correo]" placeholder="Ingrese la correo" value="<?php echo sanitizar($usuario->correo); ?>">
@@ -30,6 +32,10 @@
         <div class="campo">
             <label class="campo__label" for="telefono">Telefono: </label>
             <input class="campo__input" type="number" id="telefono" required name="usuario[telefono]" placeholder="Ingrese la telefono" value="<?php echo sanitizar($usuario->telefono); ?>">
+        </div>
+        <div class="campo">
+            <label class="campo__label" for="fechaN">Fecha de nacimiento: </label>
+            <input class="campo__input" type="date" id="fechaN" name="usuario[fechaN]" value="<?php echo sanitizar($usuario->fechaN); ?>">
         </div>
     </div>
     <div class="dos_campos">

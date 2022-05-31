@@ -25,7 +25,6 @@ class UsuariosControler{
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $usuario = new Usuario($_POST['usuario']);
             $alertas = $usuario->validarErrores();
-
             $contraseña=$_POST['usuario']['contraseña'];
             $confirmar_contraseña=$_POST['usuario']['confirmar_contraseña'];
             if(!$contraseña===""){

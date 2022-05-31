@@ -81,3 +81,19 @@ function inicioSesion(){
         header('Location: /login');
     }
 }
+
+function getAge ($fecha){
+    //Creamos objeto fecha desde los valores recibidos
+    // $nacio = DateTime::createFromFormat('Y-m-d', $fecha);
+    //Calculamos usando diff y la fecha actual
+    echo $fecha;
+    echo getdate();
+    $calculo = $fecha->diff(getdate());
+    //Obtenemos la edad
+    $edad=  $calculo->y;    
+    if ($edad > 18) {
+        return true;  
+    }else{
+        return false;
+    }
+}

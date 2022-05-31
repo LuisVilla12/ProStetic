@@ -145,9 +145,8 @@ function mostrarServicios(servicios) {
         servicioDIV.appendChild(nombreServicio);
         servicioDIV.appendChild(detallesServicio);
         servicioDIV.onclick = function() {
-            seleccionarServicio(servicio);
+                seleccionarServicio(servicio);      
         };
-
         listadoservicios.appendChild(servicioDIV);
     });
 }
@@ -156,17 +155,32 @@ function seleccionarServicio(servicio) {
     const { id } = servicio;
     const { servicios } = cita;
     const divServicio = document.querySelector(`[data-id-servicio="${id}"]`)
+    // console.log(servicios.length);
+    if(servicios.length<=2){
         // Comprobar si el servicio ya fue agregado
-    if (servicios.some(agregado => agregado.id === id)) {
-        // Servicio ya agregado        
-        cita.servicios = servicios.filter(agregado => agregado.id !== id);
-        divServicio.classList.remove('seleccionado');
-    } else {
-        // Servicio nuevo
-        cita.servicios = [...servicios, servicio];
-        divServicio.classList.add('seleccionado');
-    }
-    // console.log(cita);
+        if (servicios.some(agregado => agregado.id === id)) {
+            // Servicio ya agregado        
+            cita.servicios = servicios.filter(agregado => agregado.id !== id);
+            divServicio.classList.remove('seleccionado');
+        } else {
+            // Servicio nuevo
+            cita.servicios = [...servicios, servicio];
+            divServicio.classList.add('seleccionado');
+        }
+    }else{
+         Swal.fire({
+             icon: 'error',
+             title: 'Error!',
+             text: 'Maximo de tres servicios por cita',
+             button: 'OK'
+         }).then(() => {
+            setTimeout(() => {
+                window.location.reload();
+            }, 500);
+        })
+     };
+    
+    // console.log(servicios);
 }
 
 function nombreCliente() {

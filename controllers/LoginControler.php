@@ -61,13 +61,16 @@ class LoginControler {
             $contraseña=$_POST['usuario']['contraseña'];
             $confirmar_contraseña=$_POST['usuario']['confirmar_contraseña'];
             $usuario = new Usuario($_POST['usuario']);
+            // debuguear($_POST);
+            // debuguear($usuario);
             $usuario->contraseña=password_hash($usuario->contraseña,PASSWORD_BCRYPT);
             // Funcion para validar alertas
             $alertas = $usuario->validarErrores();
-
             if(!($contraseña===$confirmar_contraseña)){
                 $alertas[]='Contraseñas no coinciden';
+                Usuario::setAlerta('error','Contraseñas no coinciden');
             }
+            debuguear($alertas);
             // Si el arreglo de alertas esta vacio
             if (empty($alertas)) {                
                 // verificar que cuenta no este registrada
@@ -75,18 +78,28 @@ class LoginControler {
                 if($resultado->num_rows){
                     $alertas=Usuario::getAlertas();
                 }else{
-                    // Generar token
-                    $usuario->generarToken();
-                    $correo = new Correo($usuario->correo, $usuario->nombre,$usuario->token);
-                    $correo->enviarConfirmacion();
-                    // Funcion apara guardar
-                    $usuario->guardar();
-                    if($resultado){
+                    if(getAge($usuario->fechaN)){
+                        echo "BIEN";
+                        exit;    
+                        // Generar token
+                        $usuario->generarToken();
+                        $correo = new Correo($usuario->correo, $usuario->nombre,$usuario->token);
+                        $correo->enviarConfirmacion();
+                        // Funcion apara guardar
+                        $resultado=$usuario->guardar();
+                        // debuguear($resultado);
+                        // exit;
+                        if($resultado){
                         header('Location: /mensaje');
+                        }
+                    }
+                    else{
+                        echo "Error";
                     }
                 }
             }
         }
+        $alertas=Usuario::getAlertas();
         $router->render('auth/crear-cuenta', [
             'usuario' => $usuario,
             'alertas' => $alertas,
@@ -125,3 +138,4 @@ class LoginControler {
         header('Location: /');
     }
 }
+
