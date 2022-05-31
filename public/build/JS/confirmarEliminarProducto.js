@@ -1,29 +1,17 @@
+const btnsEliminar = document.querySelectorAll('#eliminar');
+
 document.addEventListener('DOMContentLoaded', function() {
     eliminar();
 });
 
-
-
 function eliminar() {
-    const btnsEliminar = document.querySelectorAll('#eliminar');
-    const inputsValue = document.querySelectorAll('#idEliminar');
-    // console.log(id);
-    // inputsValue.forEach(inputValue => {
-    //     console.log(inputValue);
-    // });
     btnsEliminar.forEach(btnEliminar => {
         btnEliminar.addEventListener('click', (e) => {
             e.preventDefault();
+            const id =  e.target.dataset.id; 
+            confirmar(id); 
         });
     });
-
-    // btnEliminar.addEventListener('click', (e) => {
-    //     const id = inputsValue[contBtns].value;
-    //     e.preventDefault();
-    //     confirmar(id);
-    // });
-
-
 }
 
 function confirmar(id) {

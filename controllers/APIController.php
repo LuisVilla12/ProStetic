@@ -35,9 +35,13 @@ class APIController{
         $id=$_GET['id'] ?? '';        
         $cita= Cita::find($id);
         $resultado=$cita->asistir($id);
-        if($resultado){
-            header('Location:' . $_SERVER['HTTP_REFERER']);
-        }
+        $respuesta=[
+            'resultado'=>$resultado   
+        ];
+        echo json_encode($respuesta);
+        // if($resultado){
+        //     header('Location:' . $_SERVER['HTTP_REFERER']);
+        // }
     }
     public static function pagar(){        
         $id=$_GET['id'] ?? '';        
@@ -52,10 +56,15 @@ class APIController{
             $id=$_POST['id'];
             $cita= Cita::find($id);
             $resultado=$cita->cancelar($id);
-            debuguear($resultado);
-            if($resultado){
-                header('Location:' . $_SERVER['HTTP_REFERER']);
-            }
+            // debuguear($resultado);
+            $respuesta=[
+                'resultado'=>$resultado   
+            ];
+            echo json_encode($respuesta);
+            // if($resultado){
+            //     header('Location:' . $_SERVER['HTTP_REFERER']);
+            // }
         }
+
     }
 }

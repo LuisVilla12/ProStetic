@@ -41,8 +41,8 @@
                         <form method="GET" class="w-100" action="/inventario/eliminar">
                             <input type="hidden" name="id" id="idEliminar" value="<?php echo $producto->id; ?>">
                             <input type="hidden" name="tipo" value="producto" >
-                            <button type="submit" class="btn rojo enviar" value="" id="eliminar">
-                                <i class="fa-solid fa-trash"></i>
+                            <button type="submit" class="btn rojo enviar" value="" id="eliminar"  data-id="<?php echo $producto->id; ?>">
+                                <i data-id="<?php echo $producto->id; ?>" class="fa-solid fa-trash"></i>
                             </button>
                         </form>
                         </div>                        
@@ -55,6 +55,6 @@
 <?php 
     $script="
     <script src='//cdn.jsdelivr.net/npm/sweetalert2@11'></script>
-    <script src='/build/JS/confirmarEliminar.js'></script>
+    <script src='/build/JS/confirmarEliminarProducto.js'></script>
     ";
 ?>

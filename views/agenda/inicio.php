@@ -55,14 +55,14 @@
                     <td>    
                         <div class="dos_columnas">
                             <div class="form_ajustar">
-                                <a class="padding" href="/api/asistio?id=<?php echo $cita->id;?>" ><i class="fa-regular fa-square-check"></i></a>                            
+                                <a class="padding" id="asistir" href="/api/asistio<?php echo $cita->id;?>" ><i data-id="<?php echo $cita->id; ?>" class="fa-regular fa-square-check"></i></a>                            
                             </div>
                             <div class="form_ajustar">
                                 <form method="POST" class=" posponer" action="/api/eliminar">
                                     <input type="hidden" name="id" value="<?php echo $cita->id;?>">
                                     <!-- <input type="hidden" name="tipo" value="usuario"> -->
-                                    <button type="submit" class="" value="">
-                                        <i class="fa-regular fa-rectangle-xmark"></i>
+                                    <button type="submit" class="" value="" id="eliminar" data-id="<?php echo $cita->id; ?>">
+                                        <i data-id="<?php echo $cita->id; ?>" class="fa-regular fa-rectangle-xmark"></i>
                                     </button>
                                 </form>
                             </div>                            
@@ -75,5 +75,9 @@
 </div>
 </main>
 <?php 
-    $script="<script src='build/js/buscador.js'></script>";
+    $script="
+    <script src='//cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+    <script src='build/js/buscador.js'></script>
+    <script src='/build/JS/EliminarCita.js'></script>
+    ";
 ?>
