@@ -78,6 +78,6 @@
     $script="
     <script src='//cdn.jsdelivr.net/npm/sweetalert2@11'></script>
     <script src='build/js/buscador.js'></script>
-    <script src='/build/JS/EliminarCita.js'></script>
+    <script src='/build/JS/AccionesCita.js'></script>
     ";
 ?>

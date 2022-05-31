@@ -35,11 +35,15 @@ class ProductoControler{
             if (empty($alertas)) {
                 // Funcion apara guardar
                 $resultado=$producto->guardar();
+                // $respuesta=[
+                //     'resultado'=>true   
+                // ];        
+                // echo json_encode($respuesta);
                 // debuguear($resultado);
                 // exit;
-                if($resultado['resultado']){
-                    header('Location:/inventario/admin');
-                }
+                 if($resultado['resultado']){
+                     header('Location:/inventario/admin');
+                 }
             }
         }
         $router->render('inventario/crear', [
