@@ -38,7 +38,7 @@
                     <td>
                         <div class="dos_columnas">                        
                         <a href="/inventario/actualizar?id=<?php echo $producto->id; ?>" class="btn amarillo" ><i class="fa-solid fa-pen"></i></a>
-                        <form method="POST" class="w-100" action="/inventario/eliminar">
+                        <form method="GET" class="w-100" action="/inventario/eliminar">
                             <input type="hidden" name="id" id="idEliminar" value="<?php echo $producto->id; ?>">
                             <input type="hidden" name="tipo" value="producto" >
                             <button type="submit" class="btn rojo enviar" value="" id="eliminar">

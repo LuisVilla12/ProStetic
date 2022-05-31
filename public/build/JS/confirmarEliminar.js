@@ -2,16 +2,24 @@ document.addEventListener('DOMContentLoaded', function() {
     eliminar();
 });
 
+
+
 function eliminar() {
     const btnEliminar = document.querySelector('#eliminar');
-    console.log(btnEliminar);
+    const inputValue = document.querySelector('#idEliminar');
+    // console.log(btnEliminar);
+    // console.log(inputValue);
+    // console.log(id);
     btnEliminar.addEventListener('click', (e) => {
+        const id = inputValue.value;
         e.preventDefault();
-        // confirmar_dos(e);
+        // confirmar_dos(id);
+        confirmar(id);
     });
+
 }
 
-function confirmar(e) {
+function confirmar(id) {
     Swal.fire({
         title: '¿Seguro que lo deseas eliminar un producto?',
         text: "No podras revertir esta accion",
@@ -23,34 +31,38 @@ function confirmar(e) {
     }).then((result) => {
         if (result.isConfirmed) {
             Swal.fire(
-                    'Eliminado!',
-                    'Producto ha sido eliminado',
-                    'success'
-                )
-                // setTimeout(() => {
-                //     window.location.reload();
-                // }, 1000);
+                'Eliminado!',
+                'Producto ha sido eliminado',
+                'success'
+            )
+            confirmar_dos(id)
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
         }
     })
 }
 
-async function confirmar_dos(e) {
-    const inputValue = document.querySelector('#idEliminar');
-    const id = inputValue.textContent;
+
+
+async function confirmar_dos(id) {
+    // console.log(id);
     const datos = new FormData();
     datos.append('id', id);
-    const url = "http://localhost:3000/inventario/eliminar";
-    const respuesta = await fetch(url, {
-        method: 'POST',
-        // body cuerpo de la peticion
-        body: datos
-    });
-    const resultado = await respuesta.json();
-    if (resultado.resultado) {
+    datos.append('tipo', 'producto');
+    try {
+        const url = "http://localhost:3000/inventario/eliminar";
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            // body cuerpo de la peticion
+            body: datos
+        });
+        const resultado = await respuesta.json();
+    } catch (error) {
         Swal.fire({
-            icon: 'success',
-            title: 'Cita registrada',
-            text: 'Tu cita fue registrada correctamente',
+            icon: 'error',
+            title: 'Error',
+            text: 'Producto no pudo ser eliminado',
             // footer: '<a href="">Why do I have this issue?</a>'
             button: 'OK'
         }).then(() => {
@@ -58,5 +70,5 @@ async function confirmar_dos(e) {
                 window.location.reload();
             }, 1000);
         })
-    };
+    }
 }

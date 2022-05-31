@@ -85,9 +85,14 @@ class ProductoControler{
                     if($tipo==='producto'){
                         $producto=Producto::find($id);
                         $resultado=$producto->eliminarProducto();    
-                        if($resultado){
-                            header('Location:/inventario/admin');
-                        }
+                        
+                        $respuesta=[
+                            'resultado'=>$resultado   
+                        ];
+                        echo json_encode($respuesta);       
+                        // if($resultado){
+                        //     header('Location:/inventario/admin');
+                        // }
                     }
                 }
             }
