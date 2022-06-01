@@ -63,12 +63,13 @@ class Cita extends ActiveRecord{
             return false;
         }
     }    
-    // public static function horariosNoDisponibles($horario,$fecha) {
-    //     $query= "SELECT cs.idServicio FROM  citas as c inner join citas_servicios as cs on cs.idCita=c.id inner join horarios as h on c.id_horario=h.id WHERE fecha= '" .$fecha . "'" . " AND ". $horario . " = " . "h.id";
-    //     $resultado = self::consultarSQL($query);
-    //     debuguear($resultado);
-    //     return $resultado;
-    // }
+    public static function horariosNoDisponibles($horario,$fecha) {
+        $query= "SELECT cs.idServicio FROM  citas as c inner join citas_servicios as cs on cs.idCita=c.id inner join horarios as h on c.id_horario=h.id WHERE fecha= '" .$fecha . "'" . " AND ". $horario . " = " . "h.id";
+        // debuguear($query);
+        $resultado = self::consultarSQL($query);
+        debuguear($resultado);
+        return $resultado;
+    }
 
     public static function horariosNoDisponibles2($fecha,$horario) {
         $query= "SELECT c.id,h.horaInicio,h.horaFin FROM  citas as c inner join horarios as h on c.id_horario=h.id WHERE fecha= '" .$fecha . "'" . " AND ". $horario . " = " . "h.id";

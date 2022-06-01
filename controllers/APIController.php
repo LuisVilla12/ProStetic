@@ -3,6 +3,7 @@ namespace Controllers;
 
 use Model\Servicio;
 use Model\CitaServicio;
+use Model\ServicioTEMP;
 use Model\Cita;
 
 class APIController{
@@ -12,6 +13,7 @@ class APIController{
     }
     public static function guardar(){
         $cita= new Cita($_POST);
+        $servicio= new ServicioTEMP();
         // $servicio= new Servicio();
         $resultadoExisteCita =$cita->existeCitaEnEseDia($cita->fecha);
         // si no hay citas ese dia
@@ -53,7 +55,8 @@ class APIController{
                 ];
                 echo json_encode($respuesta);
             }else{
-                // $resultadoHorariosOcupados=$servicio->horariosNoDisponibles('11','2022-06-02');
+                $resultadoHorariosOcupados=$servicio->horariosNoDisponibles($cita->id_horario,$cita->fecha);
+
             }
         }                  
  }
