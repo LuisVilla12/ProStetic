@@ -1,9 +1,10 @@
 <h1 class="titulo">Crear cuenta</h1>
 <p class="descripcion">Ingresa tus datos</p>
+    
+<main class="contenedor">    
     <?php
         include_once __DIR__ . '/../templates/alertas.php';
     ?>
-<main class="contenedor">    
     <form action="" class="formulario" method="POST">
     <fieldset>
         <legend>Informacion general</legend>

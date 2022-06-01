@@ -14,6 +14,15 @@ class PaginasControler {
             'servicios'=>$servicios
         ]);
     }
+    public static function servicios(Router $router){
+        $inicio=true;
+        $servicios=Servicio::all();
+        $router->render('paginas/servicios',[
+            'inicio'=>$inicio,
+            'servicios'=>$servicios
+        ]);
+    }
+
     public static function menu(Router $router){
         $inicio=false;
         $router->render('paginas/admin',[

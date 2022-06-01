@@ -51,6 +51,7 @@ $router->post('/servicios/eliminar',[ServiciosController::class,'eliminar']);
 
 // Publica
 $router->get('/',[PaginasControler::class,'index']);
+$router->get('/servicios',[PaginasControler::class,'servicios']);
 $router->get('/admin',[PaginasControler::class,'menu']);
 // Agenda
 $router->get('/agenda/inicio',[PaginasControler::class,'inicio']);

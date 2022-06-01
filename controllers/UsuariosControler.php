@@ -35,15 +35,20 @@ class UsuariosControler{
             }                     
             // Si el arreglo de errores esta vacio
             if (empty($alertas)) {
-                $usuario->contraseña=password_hash($usuario->contraseña,PASSWORD_BCRYPT);
-                $usuario->confirmado=1;
-                // Funcion apara guardar
-                $resultado=$usuario->guardar();
-                if($resultado){
-                    header('Location: /usuarios/admin');
+                if(getAge($usuario->fechaN)){    
+                    $usuario->contraseña=password_hash($usuario->contraseña,PASSWORD_BCRYPT);
+                    $usuario->confirmado=1;
+                    // Funcion apara guardar
+                    $resultado=$usuario->guardar();
+                    if($resultado){
+                        header('Location: /usuarios/admin');
+                    } 
+                }else{
+                    Usuario::setAlerta('error','Debes ser mayor de edad / ingresar una fecha valida'); 
                 }
             }
         }
+        $alertas=Usuario::getAlertas();
         $router->render('usuarios/crear', [
             'usuario' => $usuario,
             'alertas' => $alertas,

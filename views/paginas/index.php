@@ -1,5 +1,4 @@
-    <main class="servicios">
-        
+    <main class="servicios">        
         <h2 class="servicios__titulo">Nuestros servicios</h2>
         <div class="servicios__grid contenedor">
         <?php foreach ($servicios as $servicio):?>
@@ -13,10 +12,9 @@
                 </div>
             </div>
         <?php endforeach;?>                    
-        
     </main>
     <div class="centrar contenedor">
-            <a href="#" class="btn primario">Ver más...</a>
+            <a href="/servicios" class="btn primario">Ver más...</a>
         </div>
 
     <article class="tramitar">

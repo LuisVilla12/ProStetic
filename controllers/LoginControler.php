@@ -70,7 +70,7 @@ class LoginControler {
                 $alertas[]='Contraseñas no coinciden';
                 Usuario::setAlerta('error','Contraseñas no coinciden');
             }
-            debuguear($alertas);
+            // debuguear($alertas);
             // Si el arreglo de alertas esta vacio
             if (empty($alertas)) {                
                 // verificar que cuenta no este registrada
@@ -78,9 +78,7 @@ class LoginControler {
                 if($resultado->num_rows){
                     $alertas=Usuario::getAlertas();
                 }else{
-                    if(getAge($usuario->fechaN)){
-                        echo "BIEN";
-                        exit;    
+                    if(getAge($usuario->fechaN)){    
                         // Generar token
                         $usuario->generarToken();
                         $correo = new Correo($usuario->correo, $usuario->nombre,$usuario->token);
@@ -94,7 +92,8 @@ class LoginControler {
                         }
                     }
                     else{
-                        echo "Error";
+                        Usuario::setAlerta('error','Debes ser mayor de edad / ingresar una fecha valida');
+                        // debuguear($alertas);
                     }
                 }
             }
