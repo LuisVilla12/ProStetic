@@ -10,27 +10,53 @@ class APIController{
         $servicios = Servicio::all();        
         echo json_encode($servicios);
     }
-    public static function guardar(){                
-        $cita= new Cita($_POST);        
-        $resultado = $cita->guardar();        
-        $idServicios=explode(",",$_POST['servicios']);
-
-         // itera sonbre el arreglo de servicios
-        foreach ($idServicios as $idServicio){
-            $args=[
-                'idCita'=>$resultado['id'],
-                'idServicio'=>$idServicio
+    public static function guardar(){
+        $cita= new Cita($_POST);
+        // $servicio= new Servicio();
+        $resultadoExisteCita =$cita->existeCitaEnEseDia($cita->fecha);
+        // si no hay citas ese dia
+        if(!$resultadoExisteCita){
+            // debuguear('Cita en dia');
+            $resultado = $cita->guardar();        
+            $idServicios=explode(",",$_POST['servicios']);
+             // itera sonbre el arreglo de servicios
+            foreach ($idServicios as $idServicio){
+                $args=[
+                    'idCita'=>$resultado['id'],
+                    'idServicio'=>$idServicio
+                ];
+                $citaServicio= new CitaServicio($args);
+                $resultado2=$citaServicio->guardar();
+            }
+            $respuesta=[
+                'resultado'=>$resultado   
             ];
-            $citaServicio= new CitaServicio($args);
-            $resultado2=$citaServicio->guardar();
-            // debuguear($resultado2);
-            // exit;
+            echo json_encode($respuesta);    
         }
-        $respuesta=[
-            'resultado'=>$resultado   
-        ];
-        echo json_encode($respuesta);       
-    }
+        else{
+            // debuguear('Cita en el horario');
+            $resultadoExisteCitaHorario =$cita->existeCitaEnEseHorario($cita->fecha,$cita->id_horario);   
+            if($resultadoExisteCitaHorario){
+                $resultado = $cita->guardar();     
+                $idServicios=explode(",",$_POST['servicios']);
+                // itera sonbre el arreglo de servicios
+                foreach ($idServicios as $idServicio){
+                    $args=[
+                        'idCita'=>$resultado['id'],
+                        'idServicio'=>$idServicio
+                    ];
+                    $citaServicio= new CitaServicio($args);
+                    $resultado2=$citaServicio->guardar();
+                }
+                $respuesta=[
+                    'resultado'=>$resultado   
+                ];
+                echo json_encode($respuesta);
+            }else{
+                // $resultadoHorariosOcupados=$servicio->horariosNoDisponibles('11','2022-06-02');
+            }
+        }                  
+ }
     public static function asistio(){        
         $id=$_GET['id'] ?? '';        
         $cita= Cita::find($id);

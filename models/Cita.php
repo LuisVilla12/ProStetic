@@ -35,11 +35,11 @@ class Cita extends ActiveRecord{
         $resultado = self::$db->query($query);        
         return $resultado;
     }
+
+
     // PRUEBAS HORARIO
     public function existeCitaEnEseDia($fecha){
         $query="SELECT * FROM " . self::$tabla . " WHERE fecha = '" . $fecha ."'";
-        // debuguear($query);
-        // exit;
         $resultado = self::$db->query($query);
         if($resultado->num_rows){
             return true;
@@ -50,21 +50,28 @@ class Cita extends ActiveRecord{
 
     public function existeCitaEnEseHorario($fecha,$horario){
         // $query="SELECT * FROM " . $horarios . " WHERE fecha = '" . $fecha ."'";
-        $query= "SELECT * FROM  cita as c inner join horarios as h on c.id_horario=h.id WHERE fecha= '" .$fecha . "'" . " AND ". $horario . " = " . "h.id";
-        // debuguear($query);
+        $query= "SELECT * FROM  citas as c inner join horarios as h on c.id_horario=h.id WHERE fecha= '" .$fecha . "'" . " AND ". $horario . " = " . "h.id";
+        // echo debuguear($query);
         // exit;
         $resultado = self::$db->query($query);
-        // debuguear($resultado);
-        // exit;
-        if($resultado->num_rows){
+        // debuguear ($resultado);
+        if($resultado->num_rows==0){
+            // debuguear ('hola');
             return true;
         }else{
+            // debuguear ('adios');
             return false;
         }
     }    
+    // public static function horariosNoDisponibles($horario,$fecha) {
+    //     $query= "SELECT cs.idServicio FROM  citas as c inner join citas_servicios as cs on cs.idCita=c.id inner join horarios as h on c.id_horario=h.id WHERE fecha= '" .$fecha . "'" . " AND ". $horario . " = " . "h.id";
+    //     $resultado = self::consultarSQL($query);
+    //     debuguear($resultado);
+    //     return $resultado;
+    // }
 
-    public static function horariosNoDisponibles($fecha,$horario) {
-        $query= "SELECT id,horaInicio,horaFin FROM  cita as c inner join horarios as h on c.id_horario=h.id WHERE fecha= '" .$fecha . "'" . " AND ". $horario . " = " . "h.id";
+    public static function horariosNoDisponibles2($fecha,$horario) {
+        $query= "SELECT c.id,h.horaInicio,h.horaFin FROM  citas as c inner join horarios as h on c.id_horario=h.id WHERE fecha= '" .$fecha . "'" . " AND ". $horario . " = " . "h.id";
         // $query = "SELECT * FROM " . static::$tabla;
         $resultado = self::consultarSQL($query);
         debuguear($resultado);

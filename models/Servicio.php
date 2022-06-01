@@ -32,5 +32,11 @@ class Servicio extends ActiveRecord{
         }
         return self::$alertas;
     }
+    public static function horariosNoDisponibles($horario,$fecha) {
+        $query= "SELECT cs.idServicio FROM  citas as c inner join citas_servicios as cs on cs.idCita=c.id inner join horarios as h on c.id_horario=h.id WHERE fecha= '" .$fecha . "'" . " AND ". $horario . " = " . "h.id";
+        $resultado = self::consultarSQL($query);
+        debuguear($resultado);
+        return $resultado;
+    }
 }
 ?>
