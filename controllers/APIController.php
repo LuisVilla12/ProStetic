@@ -94,6 +94,5 @@ class APIController{
             //     header('Location:' . $_SERVER['HTTP_REFERER']);
             // }
         }
-
     }
 }

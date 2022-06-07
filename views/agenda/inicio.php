@@ -54,8 +54,8 @@
                     <td><?php echo "$".$total . ".00"?></td>            
                     <td>    
                         <div class="dos_columnas">
-                            <div class="form_ajustar">
-                                <a class="padding" id="asistir" href="/api/asistio<?php echo $cita->id;?>" ><i data-id="<?php echo $cita->id; ?>" class="fa-regular fa-square-check"></i></a>                            
+                            <div class="form_ajustar    ">
+                                <a class="padding" id="asistir" href="/api/asistio?id=<?php echo $cita->id;?>" ><i data-id="<?php echo $cita->id; ?>" class="fa-regular fa-square-check"></i></a>                            
                             </div>
                             <div class="form_ajustar">
                                 <form method="POST" class=" posponer" action="/api/eliminar">
